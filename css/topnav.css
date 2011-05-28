@@ -1,0 +1,60 @@
+#topnav {
+	width: 960px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	padding: 0px 30px 0px 30px;
+	margin: 0px;
+	height: 38px;
+}
+
+#topnav ul#mainnav {
+	height: 38px;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+ul#mainnav li {
+	background: url(../images/NAV_BG.gif) no-repeat 0 -38px;
+	float: left; 
+	padding: 0px 0px 0px 7px;
+	margin: 0px 2px 0px 0px;
+	color: #fff;
+    height: 38px;
+	font-weight: normal;
+}
+
+ul#mainnav a {
+	background: url(../images/NAV_BG.gif) no-repeat 100% -38px;
+	color: #fff;
+	float: left;
+	padding: 10px 7px 0px 0px;
+	text-decoration: none;
+	display: block;
+	font-weight: normal;
+    height: 28px;
+}
+
+ul#mainnav li:hover {
+	background-color: #515355;
+	background-position: 0 -38px;
+	color: #d19811;
+}
+ul#mainnav li:hover a {
+	background-position: 100% -38px;
+	color: #d19811;
+}
+
+ul#mainnav li.current {
+	background-color: #515355;
+	background-position: 0 -38px;
+	color: #d19811;
+}
+
+ul#mainnav li.current a {
+	background-position: 100% -38px;
+	color: #d19811;
+}
+
+ul#mainnav li.hidden {
+	display:none;
+}
