@@ -1,0 +1,30 @@
+<div id="clear"></div>
+<div id="rightColumnHeader">
+<a href="http://www.sugarcaneweb.co.uk" target="_blank"><img src="/images/HEADER_MARKETING_LARGE.jpg" alt="sugarcane marketing" /></a><br />
+<div id="rightColumnHeaderText">
+<h2>General Blog Title</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiing elit. Maecenas dignissim, loreac mperdiet pharetra, eros mi malesua 
+metus, sit amet egestas libero eronec magna. Praesent ipsum orci, rutruvarius fermentuid, sodales sed orci. Sed id 
+neque quam. Proin adipisc, mauris ac.
+</p>
+</div><!-- end id="rightColumnHeaderText" -->
+</div><!-- end id="rightColumnHeader" -->
+
+<div id="blogposts">
+    <?php if(count($this->blog_posts)): ?>
+        <?php foreach($this->blog_posts as $post): ?>
+            <div class="blogpost <?=$post['post_imagelocation']?>">
+                <div class="blogimage">
+                    <a href="/blog/view/<?=$post['post_id']?>"><img src="/images/blogimages/<?=$post['post_image']?>" width="328" alt="<?=$post['post_title']?>" /></a>
+                </div>
+                <div class="blogsummarycontent">
+                    <p class="blogtitle"><a href="/blog/view/<?=$post['post_id']?>"><?=$post['post_title']?></a></p>
+                    <p style="display: none;"><?=date('d M', strtotime($post['date_added']))?></p>
+                    <?=$post['post_summary']?>
+                    ...<a href="/blog/view/<?=$post['post_id']?>">More</a>
+                </div>
+            </div>
+                        <div id="clear"></div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
