@@ -54,3 +54,14 @@ a:active {color: #40423d; text-decoration: none;}
 }
 
 .white { color: #fff; }
+
+#mainContainer {
+    padding: 10px;
+}
+#mainnav {
+    list-style: none;
+}
+#mainnav a {
+    font-size: 14px;
+    font-weight: bold;
+}
