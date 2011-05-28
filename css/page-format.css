@@ -1,0 +1,134 @@
+/* CSS */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body {
+	background: #fff url("../images/BODY_BG.jpg") repeat-x top center;
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body, p, td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #40423d;
+	line-height: 1.6em;
+    margin-bottom: 10px;
+}
+
+#mainContainer {
+	width: 1020px;
+	margin: 0px auto;
+	padding: 0px;
+	background: url("../images/CONTENT_BG.png") repeat-y top center;
+}
+
+/* HEADER */
+
+#header {
+	width: 960px;
+	height: 90px;
+	margin: 0px;
+	padding: 0px 30px 0px 30px;
+}
+
+#headerLeft {
+	float: left;
+	width: 500px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#headerRight {
+	float: left;
+	width: 460px;
+	margin: 0px;
+	padding: 7px 0px 7px 0px;
+}
+
+#headerRight p {
+	font-size: 14px;
+}
+
+#headerImage {
+	position: relative;
+	width: 960px;
+	height: 275px;
+	margin: 0px;
+	padding: 0px;
+	padding: 0px 30px 0px 30px;	
+}
+
+#headerImagePhoto {
+	position: relative;
+	width: 960px;
+	height: 275px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;	
+}
+
+#headerImageCaption {
+	position: relative;
+	width: 960px;
+	height: 38px;
+	margin: -38px 0px 0px 0px;
+	padding: 0px;
+	background-color: #515355;
+}
+
+#headerImageCaption h1 {
+	color: #fff;
+	font-size: 16px;
+}
+
+/* CONTENT */
+
+#contentContainer {
+	position: relative;
+	width: 960px;
+	margin: 0px;
+	padding: 0px;
+	padding: 0px 30px 0px 30px;
+}
+
+/* FOOTER */
+
+#footer {
+	clear: both;
+    width: 960px;
+	padding: 0px 30px 0px 30px;
+	margin: 0px;
+    background: url("../images/FOOTER_BG.gif") no-repeat top center;
+}
+
+/*CONTACT FORM STYLES*/
+
+.form_desc {
+	float: left;
+	width: 80px;
+	line-height: 15px;
+	padding-bottom: 6px;
+	margin-left: 0px;
+	font-family: Arial, Helvetica, sans-serif; font-size: 12px;}
+.form_field {
+	padding-bottom: 6px;
+	clear: both;
+}
+.form_content {
+	width: 170px;
+	border: 1px solid #999;
+}
+.form_base {
+	padding-left: 80px;
+	padding-top: 10px;
+	padding-bottom:3px;
+	font-family: Verdana, Geneva, sans-serif; font-size: 10px; line-height: 1.2em
+}
+
+.form_base input {
+	margin-top: 4px;
+	padding-top: 0px;
+}
