@@ -1,0 +1,143 @@
+<div id="artistShow">Artist</div>
+<div id="patronShow">Patron</div>
+<div id="artist" style="display: none;">
+
+    <h1>Artist Signup</h1>
+
+    <form method="" action="post">
+        <p>I would like to join the art house as </p>
+        <input type="radio" class="membership" name="membership" value="individual" /> A individual artist: <strong>&pound;15.00</strong> (<strong>&pound;7.50</strong> concessionary membership, not available to international members)<br />
+        <input type="radio" class="membership" name="membership" value="pair" /> Two people at the same address: <strong>&pound;20.00</strong><br />
+        <input type="radio" class="membership" name="membership" value="group" /> As a Group: <strong>&pound;32.50</strong> (For group membership, please give the name of the person you would like us to address correspondence to)<br />
+        <div id="individual" class="information" style="display: none;">        
+            <p>Individual information</p>        
+                <input type="text" name="name"/> Name <br/>
+                <input type="text" name="addressOne"/> Address line one <br/>
+                <input type="text" name="addressTwo"/> Address line two <br/>
+                <input type="text" name="city"/> City <br/>
+                <input type="text" name="county"/> County <br/>
+                <input type="text" name="country"/> Country <br/>
+                <input type="text" name="telephone"/> Telephone <br/>
+                <input type="text" name="mobile"/> Mobile <br/>
+                <input type="text" name="email"/> Email <br/>
+                <input type="text" name="website"/> Website <br/>                        
+        </div>        
+        <div id="pair" class="information" style="display: none;">    
+            <p>Individual one information</p>        
+                <input type="text" name="nameFirst"/> Name <br/>
+                <input type="text" name="mobileFirst"/> Mobile <br/>
+                <input type="text" name="emailFirst"/> Email <br/>
+                <input type="text" name="websiteFirst"/> Website <br/>        
+            <p>Individual two information</p>        
+                <input type="text" name="nameSecond"/> Name <br/>            
+                <input type="text" name="mobileSecond"/> Mobile <br/>
+                <input type="text" name="emailSecond"/> Email <br/>
+                <input type="text" name="websiteSecond"/> Website <br/>            
+            <p>Address</p>        
+                <input type="text" name="addressOne"/> Address line one <br/>
+                <input type="text" name="addressTwo"/> Address line two <br/>
+                <input type="text" name="city"/> City <br/>
+                <input type="text" name="county"/> County <br/>
+                <input type="text" name="country"/> Country <br/>
+                <input type="text" name="telephoneFirst"/> Telephone <br/>                        
+        </div>
+
+        <div id="group" class="information" style="display: none;">                
+            <p>Group information</p>        
+                <input type="text" name="groupName"/> Group name <br/>
+                <input type="text" name="name"/> Name <br/>
+                <input type="text" name="addressOne"/> Address line one <br/>
+                <input type="text" name="addressTwo"/> Address line two <br/>
+                <input type="text" name="city"/> City <br/>
+                <input type="text" name="county"/> County <br/>
+                <input type="text" name="country"/> Country <br/>
+                <input type="text" name="telephone"/> Telephone <br/>
+                <input type="text" name="mobile"/> Mobile <br/>
+                <input type="text" name="email"/> Email <br/>
+                <input type="text" name="website"/> Website <br/>                       
+        </div>
+        <div id="generic" style="display: none;">
+            <p>More iformatiom</p>
+                How did you hear about The Art House?
+                <br/>
+                <select name="hear">
+                    <option value="leaflet">Leaflet</option>
+                    <option value="wordofmouth">Word of mouth</option>
+                    <option value="website">Website</option>
+                    <option value="press">Press</option>
+                    <option value="other">Other</option>
+                </select>
+                <br/>
+                <br/>
+                Art Form (select from the following)
+                <br/>
+                <input type="checkbox" name="artForm" value="2D"/> 2D <br/>
+                <input type="checkbox" name="artForm" value="3DObject"/> 3D Object <br/>
+                <input type="checkbox" name="artForm" value="publicArt"/> Public Art <br/>
+                <input type="checkbox" name="artForm" value="drawing"/> Drawing <br/>
+                <input type="checkbox" name="artForm" value="filmVideo"/> Film &amp; video <br/>
+                <input type="checkbox" name="artForm" value="installation"/> Installation <br/>
+                <input type="checkbox" name="artForm" value="mixedMedia"/> Mixed media <br/>
+                <input type="checkbox" name="artForm" value="painting"/> Painting <br/>
+                <input type="checkbox" name="artForm" value="performance"/> Performance <br/>
+                <input type="checkbox" name="artForm" value="photography"/> Photography <br/>
+                <input type="checkbox" name="artForm" value="print"/> Print <br/>
+                <input type="checkbox" name="artForm" value="sculpture"/> Sculpture <br/>
+                <input type="checkbox" name="artForm" value="sound"/> Sound <br/>
+                <input type="checkbox" name="artForm" value="textiles"/> Textiles <br/>
+                <input type="checkbox" name="artForm" value="jewellery"/> Jewellery <br/>
+                <input type="checkbox" name="artForm" value="design"/> Design <br/>
+                <br/>
+                <br/>
+                Activity
+                <br/>
+                <input type="checkbox" name="activity" value="exhibitions"/> Exhibitions <br/>
+                <input type="checkbox" name="activity" value="commissions"/> Commissions <br/>
+                <input type="checkbox" name="activity" value="residency"/> Residency <br/>
+                <input type="checkbox" name="activity" value="selling"/> Selling <br/>
+                <input type="checkbox" name="activity" value="workshopTeaching"/> Workshop/Teaching <br/>
+                <input type="checkbox" name="activity" value="collaborations"/> Collaborations <br/>
+                <input type="text" name="activity"/> Other <br/>
+                <br/>
+                <br/>
+            <input type="submit" value="Apply"/>                      
+        </div>
+    </form>
+    
+</div><!-- end id-"artist" -->
+<div id="patron" style="display: none;">
+
+    <h1>Patron Signup</h1>
+
+    <form method="" action="post">  
+        <p>Personal information</p>        
+            <input type="text" name="name"/> Name <br/>
+            <input type="text" name="addressOne"/> Address line one <br/>
+            <input type="text" name="addressTwo"/> Address line two <br/>
+            <input type="text" name="city"/> City <br/>
+            <input type="text" name="county"/> County <br/>
+            <input type="text" name="country"/> Country <br/>
+            <input type="text" name="telephone"/> Telephone <br/>
+            <input type="text" name="mobile"/> Mobile <br/>
+            <input type="text" name="email"/> Email <br/>
+            <input type="text" name="website"/> Website <br/>                                                
+        <p>More iformatiom</p>
+            How did you hear about The Art House?
+            <br/>
+            <select name="hear">
+                <option value="leaflet">Leaflet</option>
+                <option value="wordofmouth">Word of mouth</option>
+                <option value="website">Website</option>
+                <option value="press">Press</option>
+                <option value="other">Other</option>
+            </select>
+            <br/>
+            <br/>
+            <input type="radio" name="terms" value="agree" id="agree"/>
+            I wish to become a patron  and agree to pay the membership fee of &pound;xx per annum and agree to the terms and conditions of membership (link to terms and conditions)
+            <br/>
+            <br/>
+            <input type="submit" value="Apply" id="submitPatron"/>                                  
+    </form>
+    
+</div><!-- end id-"patron"-->    
