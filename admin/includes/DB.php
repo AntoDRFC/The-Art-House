@@ -10,7 +10,7 @@ class DB {
 	
 	
 	// 
-	function connect ($db = 'arthouse', $host = 'localhost', $user = 'root', $password = 'O1211990'){
+	function connect ($db, $host = 'localhost', $user = 'root', $password = ''){
 		//echo "Connect";
 		if (isset($db)) {
 
