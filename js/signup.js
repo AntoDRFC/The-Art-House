@@ -15,8 +15,15 @@ $(document).ready(function(){
       var divShow = $(this).attr('value');
       
       $('.information').hide();
-      $('#' + divShow).show();
+      $('#' + divShow).show(); 
       $('#generic').show();
+      
+      if(divShow == 'group') {
+          $('#individual').show();
+          $('#individual').find('p:first').hide();
+      } else {
+          $('#individual').find('p:first').show();
+      }
        
    });
     

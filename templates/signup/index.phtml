@@ -4,11 +4,16 @@
 
     <h1>Artist Signup</h1>
 
-    <form method="" action="post">
+    <form method="post" action="/signup/senddetails">
+        <input type="hidden" name="type" value="artist"/>
         <p>I would like to join the art house as </p>
         <input type="radio" class="membership" name="membership" value="individual" /> A individual artist: <strong>&pound;15.00</strong> (<strong>&pound;7.50</strong> concessionary membership, not available to international members)<br />
         <input type="radio" class="membership" name="membership" value="pair" /> Two people at the same address: <strong>&pound;20.00</strong><br />
         <input type="radio" class="membership" name="membership" value="group" /> As a Group: <strong>&pound;32.50</strong> (For group membership, please give the name of the person you would like us to address correspondence to)<br />
+        <div id="group" class="information" style="display: none;">                
+            <p>Group information</p>        
+                <input type="text" name="groupName"/> Group name <br/>                      
+        </div>
         <div id="individual" class="information" style="display: none;">        
             <p>Individual information</p>        
                 <input type="text" name="name"/> Name <br/>
@@ -41,21 +46,7 @@
                 <input type="text" name="country"/> Country <br/>
                 <input type="text" name="telephoneFirst"/> Telephone <br/>                        
         </div>
-
-        <div id="group" class="information" style="display: none;">                
-            <p>Group information</p>        
-                <input type="text" name="groupName"/> Group name <br/>
-                <input type="text" name="name"/> Name <br/>
-                <input type="text" name="addressOne"/> Address line one <br/>
-                <input type="text" name="addressTwo"/> Address line two <br/>
-                <input type="text" name="city"/> City <br/>
-                <input type="text" name="county"/> County <br/>
-                <input type="text" name="country"/> Country <br/>
-                <input type="text" name="telephone"/> Telephone <br/>
-                <input type="text" name="mobile"/> Mobile <br/>
-                <input type="text" name="email"/> Email <br/>
-                <input type="text" name="website"/> Website <br/>                       
-        </div>
+        
         <div id="generic" style="display: none;">
             <p>More iformatiom</p>
                 How did you hear about The Art House?
@@ -109,7 +100,8 @@
 
     <h1>Patron Signup</h1>
 
-    <form method="" action="post">  
+    <form method="post" action="/signup/senddetails">
+        <input type="hidden" name="type" value="patron"/>
         <p>Personal information</p>        
             <input type="text" name="name"/> Name <br/>
             <input type="text" name="addressOne"/> Address line one <br/>
