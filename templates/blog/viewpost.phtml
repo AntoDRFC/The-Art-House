@@ -4,7 +4,7 @@
             <div class="blogimage_big">
                 <img src="/images/blogimages/<?=$this->post['post_image']?>" width="328" alt="<?=$this->post['post_title']?>" />
             </div>
-            <p id="shareon">Share this blog post on <a href="http://www.linkedin.com/cws/share?url=<?=$this->siteurl?>/blog/view/<?=$this->post['post_id']?>&t=<?=$this->post['post_title']?>" target="blank"><img src="/images/LINKEDIN.png" width="32" height="32" alt="linkedin" /></a><a href="http://www.facebook.com/sharer.php?u=<?=$this->siteurl?>/blog/view/<?=$this->post['post_id']?>&t=<?=$this->post['post_title']?>" target="blank"><img src="/images/FACEBOOK.png" width="32" height="32" alt="facebook" /></a><a href="http://twitter.com/home?status=<?=$this->post['post_title']?> <?=$this->siteurl?>/blog/view/<?=$this->post['post_id']?> %23doncaster %23webdesign" target="blank"><img src="/images/TWITTER.png" width="32" height="32" alt="twitter" /></a></p>
+            <p id="shareon" style="color: #080340;">Share this blog post on <a href="http://www.linkedin.com/cws/share?url=<?=$this->siteurl?>/blog/view/<?=$this->post['post_id']?>&t=<?=$this->post['post_title']?>" target="blank"><img src="/images/LINKEDIN.png" width="32" height="32" alt="linkedin" /></a><a href="http://www.facebook.com/sharer.php?u=<?=$this->siteurl?>/blog/view/<?=$this->post['post_id']?>&t=<?=$this->post['post_title']?>" target="blank"><img src="/images/FACEBOOK.png" width="32" height="32" alt="facebook" /></a><a href="http://twitter.com/home?status=<?=$this->post['post_title']?> <?=$this->siteurl?>/blog/view/<?=$this->post['post_id']?> %23doncaster %23webdesign" target="blank"><img src="/images/TWITTER.png" width="32" height="32" alt="twitter" /></a></p>
         </div>
         <div id="blogpost_right">
             <div class="blogcontent">
@@ -12,7 +12,7 @@
                 <?=$this->post['post_content']?>
             </div>
         </div>
-        <div id="backtoblog"><a href="/blog/<?=$this->blog_id?>">Back to <?=$this->post_title?> blog</a></div>
+        <div id="backtoblog" style="color: #080340;"><a style="color: #080340;" href="/blog/<?=$this->blog_id?>"><span style="color: #080340;">Back to</span> <?=$this->post_title?></a></div>
     </div>
     
     <div id="comment_area">
@@ -31,7 +31,7 @@
             </div>
         <?php endif; ?>
         
-        <div id="post_comment">
+        <div id="post_comment" style="background-color: #c5c5c5;">
             <h3>Post a comment</h3>
             <form method="post" action="/blog/postcomment">
                 <input type="hidden" name="post_id" value="<?=$this->post['post_id']?>" />
