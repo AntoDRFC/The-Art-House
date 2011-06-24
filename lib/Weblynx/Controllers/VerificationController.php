@@ -9,6 +9,10 @@
 
 class VerificationController extends Weblynx_Controllers_Base {
     
+    protected $table = 'artist';
+    protected $artist = '';
+    protected $primary_key = 'id';
+    
     public function indexAction() {
         
         $this->view->headJs[]    = '/js/jquery-1.4.4.js';        
@@ -22,14 +26,20 @@ class VerificationController extends Weblynx_Controllers_Base {
     
     public function activateArtist() {                
         
-        return $this->dbMapper->setAdminVerificationActive();
+        return $this->dbMapper->setAdminVerificationActive($this->table,
+                                                           "SET active = '1'",
+                                                           $this->primary_key, 
+                                                           $this->artist);
         
         // redirect 
     }
     
     public function deactivateArtist() {                
         
-        return $this->dbMapper->setAdminVerificationNotActive();
+        return $this->dbMapper->setAdminVerificationNotActive($this->table,
+                                                              "SET active = '0'",
+                                                              $this->primary_key,
+                                                              $this->artist);
         
         // redirect 
     } 
