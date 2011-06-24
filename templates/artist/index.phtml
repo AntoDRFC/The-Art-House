@@ -1,0 +1,55 @@
+<table>
+    <tr>
+        <td><a href="/artist/index/filter-char/A">A</a></td>
+        <td><a href="/artist/index/filter-char/B">B</a></td>
+        <td><a href="/artist/index/filter-char/C">C</a></td>
+        <td><a href="/artist/index/filter-char/D">D</a></td>
+        <td><a href="/artist/index/filter-char/E">E</a></td>
+        <td><a href="/artist/index/filter-char/F">F</a></td>
+        <td><a href="/artist/index/filter-char/G">G</a></td>
+        <td><a href="/artist/index/filter-char/H">H</a></td>
+        <td><a href="/artist/index/filter-char/I">I</a></td>
+        <td><a href="/artist/index/filter-char/J">J</a></td>
+        <td><a href="/artist/index/filter-char/K">K</a></td>
+        <td><a href="/artist/index/filter-char/L">L</a></td>
+        <td><a href="/artist/index/filter-char/M">M</a></td>
+        <td><a href="/artist/index/filter-char/N">N</a></td>
+        <td><a href="/artist/index/filter-char/O">O</a></td>
+        <td><a href="/artist/index/filter-char/P">P</a></td>
+        <td><a href="/artist/index/filter-char/Q">Q</a></td>
+        <td><a href="/artist/index/filter-char/R">R</a></td>
+        <td><a href="/artist/index/filter-char/S">S</a></td>
+        <td><a href="/artist/index/filter-char/T">T</a></td>
+        <td><a href="/artist/index/filter-char/U">U</a></td>
+        <td><a href="/artist/index/filter-char/V">V</a></td>
+        <td><a href="/artist/index/filter-char/W">W</a></td>
+        <td><a href="/artist/index/filter-char/X">X</a></td>
+        <td><a href="/artist/index/filter-char/Y">Y</a></td>
+        <td><a href="/artist/index/filter-char/Z">Z<a/></td>
+    </tr>    
+</table>
+
+<div id="wrapper" style="width: 800px">
+
+    <div style="width: 190px; margin-right: 10px; float: left; font-weight: bold;">Name</div>
+    <div style="width: 190px; margin-right: 10px; float: left; font-weight: bold;">Organisation</div>
+    <div style="width: 190px; margin-right: 10px; float: left; font-weight: bold;">Website</div>
+    <div style="width: 190px; float: left; font-weight: bold;">Email</div>
+    <br/>
+    <br/>
+    
+<?php         
+    foreach($this->artistsList as $value) :
+        
+        if(!$value['organisation']):
+            $value['organisation'] = '&nbsp;';
+        endif;
+        
+        echo '<div style="width: 190px; margin-right: 10px; float: left;">' . $value['name'] . '</div>';
+        echo '<div style="width: 190px; margin-right: 10px; float: left;">' . $value['organisation'] . '</div>';
+        echo '<div style="width: 190px; margin-right: 10px; float: left;">' . $value['website'] . '</div>';
+        echo '<div style="width: 190px; float: left;">' . $value['email'] . '</div>';       
+    endforeach; 
+?> 
+    
+</div>
