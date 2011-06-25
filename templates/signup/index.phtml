@@ -102,34 +102,48 @@
 
     <form method="post" action="/signup/senddetails">
         <input type="hidden" name="type" value="patron"/>
-        <p>Personal information</p>        
-            <input type="text" name="name"/> Name <br/>
-            <input type="text" name="addressOne"/> Address line one <br/>
-            <input type="text" name="addressTwo"/> Address line two <br/>
+        <p>Personal information</p>
+            <input type="text" name="firstName"/> First Name <br/>
+            <input type="text" name="surname"/> Surname <br/>
+            <input type="text" name="addressOne"/> Address Line One <br/>
+            <input type="text" name="addressTwo"/> Address Line Two <br/>
+            <input type="text" name="addressThree"/> Address Line Three <br/>
             <input type="text" name="city"/> City <br/>
+            <input type="text" name="postcode"/> Postcode <br/>
             <input type="text" name="county"/> County <br/>
             <input type="text" name="country"/> Country <br/>
-            <input type="text" name="telephone"/> Telephone <br/>
-            <input type="text" name="mobile"/> Mobile <br/>
             <input type="text" name="email"/> Email <br/>
-            <input type="text" name="website"/> Website <br/>                                                
-        <p>More iformatiom</p>
-            How did you hear about The Art House?
-            <br/>
+            <input type="text" name="telephone"/> Telephone number <br/>
+            <input type="text" name="mobile"/> Mobile <br/>
+            How did you hear about The Art House?<br/>
             <select name="hear">
-                <option value="leaflet">Leaflet</option>
-                <option value="wordofmouth">Word of mouth</option>
-                <option value="website">Website</option>
-                <option value="press">Press</option>
-                <option value="other">Other</option>
+                <option value="Friend">Friend</option>
+                <option value="The Artwalk">The Artwalk</option>
+                <option value="Internet">Internet</option>
+                <option value="Leaflet">Leaflet</option>
+                <option value="Email">Email</option>
+                <option value="Newsletter">Newsletter</option>
+                <option value="Member">Member</option>
+                <option value="Press">Press</option>
             </select>
             <br/>
             <br/>
-            <input type="radio" name="terms" value="agree" id="agree"/>
-            I wish to become a patron  and agree to pay the membership fee of &pound;xx per annum and agree to the terms and conditions of membership (link to terms and conditions)
+            <input type="checkbox" name="terms" value="agree" id="agree"/>
+            I wish to become a patron and agree to pay the membership fee of &pound;xx per annum and agree to the terms and conditions of membership (link to terms and conditions)
             <br/>
             <br/>
-            <input type="submit" value="Apply" id="submitPatron"/>                                  
+            <p><strong>Latest News</strong></p>
+            <p><input type="checkbox" value="nocomms" name="accept_communication"> As part of your membership we will send you regular communications, if you do not wish to receive these tick this box. Please note you will be able to unsubscribe to any of our services at a later date.</p>
+            
+            <p><strong>Verification</strong></p>
+            <p>How would you like to pay?</p>
+            <input type="radio" value="1" name="verification"> Download my application form and send it to you with a cheque or pay in person<br />
+            <input type="radio" value="2" name="verification"> Submit my application now and pay over the phone via a call back.<br />
+            
+            <p><strong>Declaration:</strong></p>
+            <p><input type="checkbox" value="accept" name="declaration" /> I agree to my registration details being held on computer. This payment is for one year's subscription</p>
+            
+            <input type="submit" value="Submit" id="submitPatron"/>                                  
     </form>
     
 </div><!-- end id-"patron"-->    
