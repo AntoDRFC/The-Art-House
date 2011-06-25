@@ -98,38 +98,58 @@
 </div><!-- end id-"artist" -->
 <div id="patron" style="display: none;">
 
-    <h1>Patron Signup</h1>
+    <h2>Patron Signup</h2>
 
     <form method="post" action="/signup/senddetails">
         <input type="hidden" name="type" value="patron"/>
-        <p>Personal information</p>        
-            <input type="text" name="name"/> Name <br/>
-            <input type="text" name="addressOne"/> Address line one <br/>
-            <input type="text" name="addressTwo"/> Address line two <br/>
-            <input type="text" name="city"/> City <br/>
-            <input type="text" name="county"/> County <br/>
-            <input type="text" name="country"/> Country <br/>
-            <input type="text" name="telephone"/> Telephone <br/>
-            <input type="text" name="mobile"/> Mobile <br/>
-            <input type="text" name="email"/> Email <br/>
-            <input type="text" name="website"/> Website <br/>                                                
-        <p>More iformatiom</p>
-            How did you hear about The Art House?
-            <br/>
-            <select name="hear">
-                <option value="leaflet">Leaflet</option>
-                <option value="wordofmouth">Word of mouth</option>
-                <option value="website">Website</option>
-                <option value="press">Press</option>
-                <option value="other">Other</option>
-            </select>
-            <br/>
-            <br/>
-            <input type="radio" name="terms" value="agree" id="agree"/>
-            I wish to become a patron  and agree to pay the membership fee of &pound;xx per annum and agree to the terms and conditions of membership (link to terms and conditions)
-            <br/>
-            <br/>
-            <input type="submit" value="Apply" id="submitPatron"/>                                  
+        <p>Personal information</p>
+        	<div class="form_field"><label for="firstName" class="form_desc">First Name</label><input class="form_content" type="text" name="firstName" /> *</div>
+        	<div class="form_field"><label for="surname" class="form_desc">Surname</label><input class="form_content" type="text" name="surname" /> *</div>
+        	<div class="form_field"><label for="addressOne" class="form_desc">Address Line One</label><input class="form_content" type="text" name="addressOne" /> *</div>
+        	<div class="form_field"><label for="addressTwo" class="form_desc">Address Line Two</label><input class="form_content" type="text" name="addressTwo" /></div>
+        	<div class="form_field"><label for="addressThree" class="form_desc">Address Line Three</label><input class="form_content" type="text" name="addressThree" /></div>
+        	<div class="form_field"><label for="city" class="form_desc">City</label><input class="form_content" type="text" name="city" /></div>
+        	<div class="form_field"><label for="postcode" class="form_desc">Postcode</label><input class="form_content" type="text" name="postcode" /> *</div>
+        	<div class="form_field"><label for="county" class="form_desc">County</label><input class="form_content" type="text" name="county" /></div>
+        	<div class="form_field"><label for="country" class="form_desc">Country</label><input class="form_content" type="text" name="country" /></div>
+        	<div class="form_field"><label for="email" class="form_desc">Email</label><input class="form_content" type="text" name="email" /> *</div>
+        	<div class="form_field"><label for="phone" class="form_desc">Telephone number</label><input class="form_content" type="text" name="phone" /></div>
+        	<div class="form_field"><label for="mobile" class="form_desc">Mobile</label><input class="form_content" type="text" name="mobile" /></div>
+            <div class="form_field">
+                How did you hear about The Art House?<br/>
+                <select name="hear">
+                    <option value="Friend">Friend</option>
+                    <option value="The Artwalk">The Artwalk</option>
+                    <option value="Internet">Internet</option>
+                    <option value="Leaflet">Leaflet</option>
+                    <option value="Email">Email</option>
+                    <option value="Newsletter">Newsletter</option>
+                    <option value="Member">Member</option>
+                    <option value="Press">Press</option>
+                </select>
+            </div>
+            <div class="form_field">
+                <input type="checkbox" name="terms" value="agree" id="agree"/>
+                I wish to become a patron and agree to pay the membership fee of &pound;xx per annum and agree to the <a href="/view/patron-terms-and-conditions">terms and conditions</a> of membership
+            </div>
+            <p class="form_header"><strong>Latest News</strong></p>
+            <div class="form_field">
+                <input type="checkbox" value="nocomms" name="accept_communication"> As part of your membership we will send you regular communications, if you do not wish to receive these tick this box. Please note you will be able to unsubscribe to any of our services at a later date.
+            </div>
+            
+            <p class="form_header"><strong>Verification</strong></p>
+            <div class="form_field">
+            <label class="form_desc_vertical">How would you like to pay?</label>
+            <input type="radio" value="1" name="verification"> Download my application form and send it to you with a cheque or pay in person<br />
+            <input type="radio" value="2" name="verification"> Submit my application now and pay over the phone via a call back.<br />
+            </div>
+            
+            <p class="form_header"><strong>Declaration:</strong></p>
+            <div class="form_field">
+                <input type="checkbox" value="accept" name="declaration" /> I agree to my registration details being held on computer. This payment is for one year's subscription
+            </div>
+            
+            <input type="submit" value="Submit" id="submitPatron"/>                                  
     </form>
     
 </div><!-- end id-"patron"-->    
