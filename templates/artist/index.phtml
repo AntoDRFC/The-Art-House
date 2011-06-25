@@ -5,7 +5,7 @@
 
 <p id="alphabet">
 <?php foreach(range('a','z') as $i): ?>
-    <a href="/artist/index/filter-char/<?=$i?>"><?=$i?></a> <?php if($i != 'z'): ?>|<?php endif; ?>
+    <a href="/artist/index/filter-char/<?=$i?>"<?php if($this->showall == $i): ?> class="current"<?php endif; ?>><?=$i?></a> <?php if($i != 'z'): ?>|<?php endif; ?>
 <?php endforeach; ?>
 <?php if($this->showall): ?>
 | <a href="/artist">show all</a>
