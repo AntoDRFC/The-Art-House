@@ -626,3 +626,23 @@ ul#mainnav li.current a {
 ul#mainnav li.hidden {
 	display:none;
 }
+
+
+
+/** Artist Listing Page **/
+#alphabet, #alphabet a {
+    font-weight: bold;
+}
+#alphabet {
+    font-size: 15px;
+}
+#artist_listing {
+    width: 736px;
+}
+#artist_listing th {
+    width: 184px;
+    text-align: left;
+}
+#artist_listing td {
+    padding: 8px;
+}

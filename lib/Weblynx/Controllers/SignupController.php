@@ -12,7 +12,15 @@ class SignupController extends Weblynx_Controllers_Base {
     public function indexAction() {
         $this->view->headJs[]    = '/js/jquery-1.4.4.js';
         $this->view->headJs[]    = '/js/signup.js';
+        $this->view->page_title  = 'Get Involved';
         $this->view->contentView = '/signup/index.phtml';
+        
+        $this->renderView();
+    }
+    
+    public function patronAction() {
+        $this->view->page_title  = 'Patron Signup';
+        $this->view->contentView = '/signup/patron.phtml';
         
         $this->renderView();
     }
