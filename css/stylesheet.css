@@ -30,7 +30,7 @@ html, body, p, td {
 
 #header {
 	width: 960px;
-	height: 90px;
+/* 	height: 90px; */
 	margin: 0px;
 	padding: 0px 30px 0px 30px;
 }
@@ -45,7 +45,7 @@ html, body, p, td {
 #headerRight {
 	float: left;
 	width: 400px;
-	height: 67px;
+/* 	height: 67px; */
 	margin: 0px;
 	padding: 14px 0px 7px 0px;
 }
@@ -575,6 +575,7 @@ a:active {color: #080340; text-decoration: none;}
 	padding: 0px 30px 0px 30px;
 	margin: 0px;
 	height: 38px;
+	clear: both;
 }
 
 #topnav ul#mainnav {
@@ -636,6 +637,9 @@ ul#mainnav li.hidden {
 #alphabet {
     font-size: 15px;
 }
+#alphabet a.current {
+    color: #f30000;
+}
 #artist_listing {
     width: 736px;
 }
@@ -645,4 +649,7 @@ ul#mainnav li.hidden {
 }
 #artist_listing td {
     padding: 8px;
+}
+#artist_listing td, #artist_listing td a {
+    color: #545454;
 }
