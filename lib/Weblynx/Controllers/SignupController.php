@@ -26,28 +26,49 @@ class SignupController extends Weblynx_Controllers_Base {
     }
     
     public function senddetailsAction() {                        
-        // generic inputted data        
+        // Shared input data
         
-        $address['lineOne']    = $this->req->getParam('addressOne');
-        $address['lineTwo']    = $this->req->getParam('addressTwo');
+        // Personal info
+        $userData['first_name'] = htmlentities($this->req->getParam('firstName'));
+        $userData['surname']    = htmlentities($this->req->getParam('surname'));
+        $userData['email']      = htmlentities($this->req->getParam('email'));
+        $userData['mobile']     = htmlentities($this->req->getParam('mobile'));
+        $userData['telephone']  = htmlentities($this->req->getParam('phone'));
+        $userData['website']    = htmlentities($this->req->getParam('website'));
+        
+        // Address
+        $address['line_one']   = $this->req->getParam('addressOne');
+        $address['line_two']   = $this->req->getParam('addressTwo');
+        $address['line_three'] = $this->req->getParam('addressThree');
         $address['city']       = $this->req->getParam('city');
+        $address['postcode']   = $this->req->getParam('postcode');
         $address['county']     = $this->req->getParam('county');
         $address['country']    = $this->req->getParam('country');
         
         // get saved id and pass that into $userDataAddress
         $addressId = $this->dbMapper->saveRecord($address, 'addresses', 'id');
+//var_dump($address); echo '<br><br>';
         
-        //$test = htmlentities($this->getRequest()->getParam('name'));
-        $userData['name']             = htmlentities($this->req->getParam('name'));
-        $userData['telephone']        = htmlentities($this->req->getParam('telephone'));
-        $userData['mobile']           = htmlentities($this->req->getParam('mobile'));
-        $userData['email']            = htmlentities($this->req->getParam('email'));
-        $userData['website']          = htmlentities($this->req->getParam('website'));
-        //$hear       = $this->getRequest()->getParam('hear');
+        // other fields
+        $userData['how_hear'] = $this->req->getParam('hear');
+        $accept_communication = $this->req->getParam('accept_communication');
+        if($accept_communication == 'nocomms') {
+            $userData['accept_communication'] = 'N';
+        }
+        
+        $userData['how_pay'] = $this->req->getParam('verification');
+        $userData['date_joined'] = date('Y-m-d');
+        
+        $memberType = $this->req->getParam('type');
+        switch($memberType) {
+            case 'patron':
+                $userData['member_type'] = 'Supporter';
+                break;
+        }
         
         // find out which type of user they are to add more details
         if($this->req->getParam('type') == 'patron') {
-            // hmm
+            
         } elseif($this->req->getParam('type') == 'artist') {
             // hmmmm 
         } elseif($this->req->getParam('type') == 'pair') {
@@ -70,10 +91,13 @@ class SignupController extends Weblynx_Controllers_Base {
         
         // save artist
         $artistId = $this->dbMapper->saveRecord($userData, 'artists', 'id');
+        //var_dump($userData);
         
         $linkAddress['artist_id']  = $artistId;
         $linkAddress['address_id'] = $addressId;
         $this->dbMapper->saveRecord($linkAddress, 'artists_addresses', '');
+        
+        $this->_redirect('/view/signupthanks');
     }
     
 }
