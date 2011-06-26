@@ -21,10 +21,10 @@
     </tr>
     <?php foreach($this->artistsList as $artist): ?>
     <tr>
-        <td><?=$artist['first_name']?> <?=$artist['surname']?></td>
+        <td><a href="/artist/viewartist/id/<?=$artist['id']?>"><?=$artist['first_name']?> <?=$artist['surname']?></a></td>
         <td><?=$artist['organisation']?></td>
-        <td><a href="<?=$artist['website']?>">Visit website</a></td>
-        <td><a href="mailto:<?=$artist['email']?>">Email artist</a></td>
+        <td><?php if($artist['website']): ?><a href="<?=$artist['website']?>">Visit website</a><?php endif; ?></td>
+        <td><?php if($artist['email']): ?><a href="mailto:<?=$artist['email']?>">Email artist</a><?php endif; ?></td>
     </tr>
     <?php endforeach; ?>
 </table>
