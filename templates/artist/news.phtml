@@ -1,0 +1,16 @@
+<p><img src="/images/artist_header.jpg" alt="Artist" width="747" height="52" /></p>
+
+<h2 class="artistname"><?=$this->artist['first_name']?> <?=$this->artist['surname']?></h2>
+
+<p id="artist_nav"><a href="/artists/biography/id/<?=$this->artist['id']?>"><img src="/images/artist_biography.jpg" alt="Biography" width="177" height="28" /></a> <a href="/artists/news/id/<?=$this->artist['id']?>"><img src="/images/artist_news.jpg" alt="News" width="177" height="28" /></a> <a href="/artists/viewartist/id/<?=$this->artist['id']?>"><img src="/images/artist_artwork.jpg" alt="Artwork" width="177" height="28" /></a></p>
+
+<?php if($this->artistNews): ?>
+    <?php foreach($this->artistNews as $news): ?>
+        <div>
+            <h3><?=$news['title']?></h3>
+            <h4><?=Globals::dateMysqlToUk($news['newsdate'])?></h4>
+            <p><?=$news['content']?></p>
+        </div>
+        <hr/>
+    <?php endforeach; ?>
+<?php endif; ?>
