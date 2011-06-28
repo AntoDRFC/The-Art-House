@@ -165,6 +165,13 @@ class Weblynx_Controllers_Base extends Zend_Controller_Action
         //$this->view->formErrors = Smart::ifsetor($_SESSION['formErrors'], null);
         //$this->view->prevPost   = Smart::ifsetor($_SESSION['prevPost'], null);
         
+        // if we dont have an header, grab the default
+        if(!isset($this->view->pageHeader)) {
+            $header = $this->dbMapper->getPagesHeader();
+            $this->view->pageHeader  = $header['picture'];
+            $this->view->pageCaption = $header['caption'];
+        }
+        
         // Get all our stuff into the template
         $this->getResponse()->appendBody($this->view->render($template));
 
