@@ -159,13 +159,27 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
     }
     
     public function getArtists($filterChar) {
-        $sql = "SELECT * FROM artists WHERE status = 'approved' AND first_name LIKE '" . $filterChar . "%'";
+        $sql = "SELECT * FROM artists WHERE status = 'approved' AND first_name LIKE '" . $filterChar . "%' ORDER BY first_name ASC";
         return $this->db->fetchAll($sql);                 
     }
     
     public function getArtist($artistId) {
-        $sql = "SELECT * FROM artists WHERE id = '" . $artistId . "'";    
+        $sql = "SELECT
+                    artists.*,
+                    addresses.*
+                FROM
+                    artists
+                LEFT JOIN artists_addresses ON artists.id = artists_addresses.artist_id
+                LEFT JOIN addresses ON artists_addresses.address_id = addresses.address_id
+                WHERE artists.id = '" . $artistId . "'";
+        
         return $this->db->fetchRow($sql);
+    }
+    
+    public function getArtistWork($artistId) {
+        $sql = sprintf("SELECT * FROM artists_work WHERE artist_id = %d ORDER BY title ASC", $artistId);
+        
+        return $this->db->fetchAll($sql);
     }
     
     public function getAddress($artistId) {

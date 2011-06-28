@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Artist Controller
+ * Artists Controller
  *
  * @author Anto Heley <anto@antodev.com>
  * @version 1.0
  */
 
-class ArtistController extends Weblynx_Controllers_Base {
+class ArtistsController extends Weblynx_Controllers_Base {
     
     public function indexAction() {
         $filterChar = $this->req->getParam('filter-char');
@@ -17,17 +17,27 @@ class ArtistController extends Weblynx_Controllers_Base {
         $this->view->metaTitle   = 'Find an Artist';
         $this->view->contentView = '/artist/index.phtml';
         $this->renderView();
-    }  
+    }
     
     public function viewartistAction() {
-        
         $artistId = $this->req->getParam('id');
+        $this->view->artist = $this->dbMapper->getArtist($artistId);
         
-        $this->view->headJs[]    = '/js/jquery-1.4.4.js';                       
-        $this->view->contentView = '/artist/moreinfo.phtml';
+        $this->view->work   = $this->dbMapper->getArtistWork($artistId);
         
-        $this->view->artist = $this->dbMapper->getArtist($artistId);                                
+        $this->view->metaTitle   = 'Artists Artwork';
         
+        $this->view->contentView = '/artist/artwork.phtml';
+        $this->renderView();
+    }
+    
+    public function biographyAction() {
+        $artistId = $this->req->getParam('id');
+        $this->view->artist = $this->dbMapper->getArtist($artistId);
+        
+        $this->view->metaTitle   = 'Artists Biography';
+        
+        $this->view->contentView = '/artist/biography.phtml';
         $this->renderView();
     }
     

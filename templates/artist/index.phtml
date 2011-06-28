@@ -5,10 +5,10 @@
 
 <p id="alphabet">
 <?php foreach(range('a','z') as $i): ?>
-    <a href="/artist/index/filter-char/<?=$i?>"<?php if($this->showall == $i): ?> class="current"<?php endif; ?>><?=$i?></a> <?php if($i != 'z'): ?>|<?php endif; ?>
+    <a href="/artists/index/filter-char/<?=$i?>"<?php if($this->showall == $i): ?> class="current"<?php endif; ?>><?=$i?></a> <?php if($i != 'z'): ?>|<?php endif; ?>
 <?php endforeach; ?>
 <?php if($this->showall): ?>
-| <a href="/artist">show all</a>
+| <a href="/artists">show all</a>
 <?php endif; ?>
 </p>
 <table cellspacing="0" id="artist_listing">
@@ -20,7 +20,7 @@
     </tr>
     <?php foreach($this->artistsList as $artist): ?>
     <tr>
-        <td><a href="/artist/viewartist/id/<?=$artist['id']?>"><?=$artist['first_name']?> <?=$artist['surname']?></a></td>
+        <td><a href="/artists/viewartist/id/<?=$artist['id']?>"><?=$artist['first_name']?> <?=$artist['surname']?></a></td>
         <td><?=$artist['organisation']?></td>
         <td><?php if($artist['website']): ?><a href="<?=$artist['website']?>">Visit website</a><?php endif; ?></td>
         <td><?php if($artist['email']): ?><a href="mailto:<?=$artist['email']?>">Email artist</a><?php endif; ?></td>

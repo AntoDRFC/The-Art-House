@@ -657,3 +657,44 @@ ul#mainnav li.hidden {
 #artist_listing td, #artist_listing td a {
     color: #545454;
 }
+
+/** Artist View Page **/
+.artistname {
+    margin-left: 8px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+#artist_nav {
+    margin-bottom: 3px;
+    line-height: 1em;
+}
+.artistswork {
+    padding: 12px 10px;
+    background: #716da0;
+    overflow: hidden;
+}
+.artworkimg {
+    float: left;
+}
+.artwork_info {
+    margin-left: 466px;
+    padding-top: 8px;
+}
+.artwork_info h3 {
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: normal;
+}
+.artwork_credits {
+    color: #ffffff;
+    font-size: 14px;
+}
+.artwork_about_header {
+    color: #ffffff;
+    font-size: 16px;
+    margin-top: 26px;
+    margin-bottom: 8px;
+}
+.artwork_about {
+    color: #ffffff;
+}
