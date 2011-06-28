@@ -1,17 +1,3 @@
-/*
- Navicat MySQL Data Transfer
-
- Source Server         : localhost
- Source Server Version : 50149
- Source Host           : localhost
- Source Database       : arthouse
-
- Target Server Version : 50149
- File Encoding         : utf-8
-
- Date: 06/25/2011 23:53:41 PM
-*/
-
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -255,4 +241,3 @@ CREATE TABLE `patron` (
   `website` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-

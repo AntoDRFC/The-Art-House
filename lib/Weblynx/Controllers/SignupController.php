@@ -29,11 +29,11 @@ class SignupController extends Weblynx_Controllers_Base {
         // Shared input data
         
         // Personal info
-        $userData['first_name'] = htmlentities($this->req->getParam('firstName'));
-        $userData['surname']    = htmlentities($this->req->getParam('surname'));
+        $userData['first_name'] = htmlentities($this->req->getParam('first_name'));
+        $userData['surname']    = htmlentities($this->req->getParam('surname'));        
         $userData['email']      = htmlentities($this->req->getParam('email'));
         $userData['mobile']     = htmlentities($this->req->getParam('mobile'));
-        $userData['telephone']  = htmlentities($this->req->getParam('phone'));
+        $userData['telephone']  = htmlentities($this->req->getParam('telephone'));
         $userData['website']    = htmlentities($this->req->getParam('website'));
         
         // Address
@@ -47,16 +47,16 @@ class SignupController extends Weblynx_Controllers_Base {
         
         // get saved id and pass that into $userDataAddress
         $addressId = $this->dbMapper->saveRecord($address, 'addresses', 'id');
-//var_dump($address); echo '<br><br>';
+        //var_dump($address); echo '<br><br>';
         
         // other fields
-        $userData['how_hear'] = $this->req->getParam('hear');
+       // $userData['how_hear'] = $this->req->getParam('hear');
         $accept_communication = $this->req->getParam('accept_communication');
         if($accept_communication == 'nocomms') {
             $userData['accept_communication'] = 'N';
         }
         
-        $userData['how_pay'] = $this->req->getParam('verification');
+       // $userData['how_pay'] = $this->req->getParam('verification');
         $userData['date_joined'] = date('Y-m-d');
         
         $memberType = $this->req->getParam('type');
@@ -72,17 +72,52 @@ class SignupController extends Weblynx_Controllers_Base {
         } elseif($this->req->getParam('type') == 'artist') {
             // hmmmm 
         } elseif($this->req->getParam('type') == 'pair') {
-            $userDataTwo['name']        = htmlentities($this->req->getParam('nameSecond'));
-            $userDataTwo['mobile']      = htmlentities($this->req->getParam('mobileSecond'));
-            $userDataTwo['telephone']   = htmlentities($this->req->getParam('emailSecond'));
-            $userDataTwo['website']     = htmlentities($this->req->getParam('websiteSecond'));
+            $userDataOne['first_name']        = htmlentities($this->req->getParam('first_nameFirst'));
+            $userDataOne['surname']           = htmlentities($this->req->getParam('surnameFirst'));            
+            $userDataOne['mobile']            = htmlentities($this->req->getParam('mobileFirst'));
+            $userDataOne['telephone']         = htmlentities($this->req->getParam('emailFirst'));
+            $userDataOne['website']           = htmlentities($this->req->getParam('websiteFirst'));
+            
+            $userDataTwo['first_name']        = htmlentities($this->req->getParam('first_nameSecond'));
+            $userDataTwo['surname']           = htmlentities($this->req->getParam('surnameSecond'));
+            $userDataTwo['surname']           = htmlentities($this->req->getParam('passwordSecond'));
+            $userDataTwo['mobile']            = htmlentities($this->req->getParam('mobileSecond'));
+            $userDataTwo['telephone']         = htmlentities($this->req->getParam('emailSecond'));
+            $userDataTwo['website']           = htmlentities($this->req->getParam('websiteSecond'));                  
+            
+            // save artist one 
+            $artistIdOne = $this->dbMapper->saveRecord($userDataOne, 'artists', 'id');
             
             // save artist two 
-            $artistId = $this->dbMapper->saveRecord($userDataTwo, 'artists', 'id');
+            $artistIdTwo = $this->dbMapper->saveRecord($userDataTwo, 'artists', 'id');
             
-            $linkAddress['artist_id']  = $artistId;
+            $linkAddressOne['artistId']  = $artistIdOne;        
+            $linkAddressOne['lineOne']   = htmlentities($this->req->getParam('addressOne'));
+            $linkAddressOne['lineTwo']   = htmlentities($this->req->getParam('addressTwo'));
+            $linkAddressOne['city']      = htmlentities($this->req->getParam('city'));
+            $linkAddressOne['county']    = htmlentities($this->req->getParam('county'));
+            $linkAddressOne['postcode']  = htmlentities($this->req->getParam('postcode'));
+            $linkAddressOne['country']   = htmlentities($this->req->getParam('country')); 
+            
+            $linkAddressTwo['artistId']  = $artistIdTwo;        
+            $linkAddressTwo['lineOne']   = htmlentities($this->req->getParam('addressOne'));
+            $linkAddressTwo['lineTwo']   = htmlentities($this->req->getParam('addressTwo'));
+            $linkAddressTwo['city']      = htmlentities($this->req->getParam('city'));
+            $linkAddressTwo['county']    = htmlentities($this->req->getParam('county'));
+            $linkAddressTwo['postcode']  = htmlentities($this->req->getParam('postcode'));
+            $linkAddressTwo['country']   = htmlentities($this->req->getParam('country'));  
+            
+            // create a artist folder for the images
+            mkdir('/images/' . $artistId, 0777);
+            
+            $linkAddressOne['artist_id']  = $artistIdOne;
+            $linkAddressTwo['artist_id']  = $artistIdTwo;
             $linkAddress['address_id'] = $addressId;
-            $this->dbMapper->saveRecord($linkAddress, 'artists_addresses', '');           
+            $this->dbMapper->saveRecord($linkAddress, 'artists_addresses', '');
+            
+            $this->dbMapper->saveRecord($linkAddressOne, 'addresses', 'id');
+            $this->dbMapper->saveRecord($linkAddressTwo, 'addresses', 'id');
+            
         } else {
             $groupName = htmlentities($this->req->getParam('groupName'));
         }          
@@ -98,6 +133,19 @@ class SignupController extends Weblynx_Controllers_Base {
         $this->dbMapper->saveRecord($linkAddress, 'artists_addresses', '');
         
         $this->_redirect('/view/signupthanks');
+        $linkAddress['artistId']  = $artistId;        
+        $linkAddress['lineOne']   = htmlentities($this->req->getParam('addressOne'));
+        $linkAddress['lineTwo']   = htmlentities($this->req->getParam('addressTwo'));
+        $linkAddress['city']      = htmlentities($this->req->getParam('city'));
+        $linkAddress['county']    = htmlentities($this->req->getParam('county'));
+        $linkAddress['postcode']  = htmlentities($this->req->getParam('postcode'));
+        $linkAddress['country']   = htmlentities($this->req->getParam('country'));
+        
+        // create a artist folder for the images
+        mkdir('/images/' . $artistId, 0777);
+        
+        $this->dbMapper->saveRecord($linkAddress, 'addresses', 'id');
+
     }
     
 }

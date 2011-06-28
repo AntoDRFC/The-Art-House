@@ -1,0 +1,13 @@
+<form method="post" action="/login/verify/">
+    <span style="color: red;"><?php echo $this->wrong; ?></span>
+    <br/><br/>
+    Email address <span style="color: red;"><?php echo $this->emailBlank; ?></span>
+    <br/><br/>   
+    <input type="text" name="email"/>
+    <br/><br/>
+    Password <span style="color: red;"><?php echo $this->passwordBlank; ?></span>
+    <br/><br/>
+    <input type="password" name="password"/>
+    <br/><br/>
+    <input type="submit" value="login"/>
+</form>

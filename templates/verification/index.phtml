@@ -1,0 +1,18 @@
+<?php
+
+    echo 'Name - ' . $this->univerifiedArtist['name'];
+    echo '<br/>';
+    echo 'Mobile - ' . $this->univerifiedArtist['mobile'];
+    echo '<br/>';
+    echo 'Telephone - ' . $this->univerifiedArtist['mobile'];
+    echo '<br/>';
+    echo 'Email - ' . $this->univerifiedArtist['email'];
+    echo '<br/>';
+    echo 'Website - ' . $this->univerifiedArtist['website'];
+    echo '<br/>';
+    if(!empty($this->univerifiedArtist['organisation'])): echo 'Organisation - ' . $this->univerifiedArtist['organisation'] . '<br/>' .  '<a href="">Verify Organisation'; endif;
+    if(empty($this->univerifiedArtist['organisation'])): '<a href="">Verify Artist'; endif;
+  
+  
+    
+?>    

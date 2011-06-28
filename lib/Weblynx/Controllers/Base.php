@@ -39,24 +39,27 @@ class Weblynx_Controllers_Base extends Zend_Controller_Action
 	 *
 	 */
 	public function init()
-	{
-		// set the current path
+	{		
+                // set the current path
 		$currentPath = rtrim($this->getRequest()->getPathInfo(), '/');
 		if(!$currentPath){
 			$currentPath = '/';
-		}
-		
-		if(str_replace('/', '', $currentPath) == 'admin') {
-		  $this->_redirect('/admin/login.php');
-		}
+		}		                
+                
+		/*if(str_replace('/', '', $currentPath) == 'admin') {
+		  $this->_redirect('/admin/login.php');                                 
+		} */                                
 
 		// setup config object
 		$this->config = Zend_Registry::get('config');
 
 		// setup db
-		$this->db  = Zend_Db::factory($this->config->database->weblynx);
-		$this->dbMapper = new Weblynx_DataMappers_General($this->db);
-
+		$this->db  = Zend_Db::factory($this->config->database->weblynx);                
+                $this->dbMapper = new Weblynx_DataMappers_General($this->db);
+                
+                //var_dump($this->db->query('SELECT * FROM artists'));
+                
+                
 		// if were in development mode, send unrouted requests to a holding page		
 		if($this->config->development->mode == 'development') {
     		if($currentPath == '/') {
