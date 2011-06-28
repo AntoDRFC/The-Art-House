@@ -54,6 +54,16 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->renderView();
     }
     
+    public function newsAction() {
+        $this->view->artistId = $this->req->getParam('id');
+        
+        $this->view->artist  = $this->dbMapper->getArtist($this->view->artistId);
+        $this->view->artistNews  = $this->dbMapper->getArtistNews($this->view->artistId);
+        
+        $this->view->contentView = '/artist/news.phtml';        
+        $this->renderView();
+    }    
+    
     public function updateAction() {                
         
         $userData['id']                          = $_SESSION['id'];
