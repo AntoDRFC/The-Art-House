@@ -32,6 +32,11 @@ class IndexController extends Weblynx_Controllers_Base {
             $this->view->metaKeywords    = $meta['meta_keywords'];
             $this->view->metaDescription = $meta['meta_description'];
             
+            // time for the pages custom header
+            $header = $this->dbMapper->getPagesHeader($page_content['page_id']);
+            $this->view->pageHeader  = $header['picture'];
+            $this->view->pageCaption = $header['caption'];
+                
             // if this is a subpage, we need to get all the other subpages
             $subpage = ($page_content['parent'] == 0) ? $page_content['page_id'] : $page_content['parent'];
             

@@ -15,11 +15,10 @@ class VerificationController extends Weblynx_Controllers_Base {
     
     public function indexAction() {
         
-        $this->view->headJs[]    = '/js/jquery-1.4.4.js';        
-        $this->view->headJs[]    = '/js/jquery.tablesorter.js';        
-        $this->view->contentView = '/admin/verification.phtml';
+        $this->view->headJs[]    = '/js/jquery-1.4.4.js';                
+        $this->view->contentView = '/verification/index.phtml';
         
-        $this->view->artistsList = $this->dbMapper->getAdminVerification();
+        $this->view->univerifiedArtist = $this->dbMapper->getAdminVerification();
         
         $this->renderView();
     }

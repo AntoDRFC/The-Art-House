@@ -39,24 +39,27 @@ class Weblynx_Controllers_Base extends Zend_Controller_Action
 	 *
 	 */
 	public function init()
-	{
-		// set the current path
+	{		
+                // set the current path
 		$currentPath = rtrim($this->getRequest()->getPathInfo(), '/');
 		if(!$currentPath){
 			$currentPath = '/';
-		}
-		
-		if(str_replace('/', '', $currentPath) == 'admin') {
-		  $this->_redirect('/admin/login.php');
-		}
+		}		                
+                
+		/*if(str_replace('/', '', $currentPath) == 'admin') {
+		  $this->_redirect('/admin/login.php');                                 
+		} */                                
 
 		// setup config object
 		$this->config = Zend_Registry::get('config');
 
 		// setup db
-		$this->db  = Zend_Db::factory($this->config->database->weblynx);
-		$this->dbMapper = new Weblynx_DataMappers_General($this->db);
-
+		$this->db  = Zend_Db::factory($this->config->database->weblynx);                
+                $this->dbMapper = new Weblynx_DataMappers_General($this->db);
+                
+                //var_dump($this->db->query('SELECT * FROM artists'));
+                
+                
 		// if were in development mode, send unrouted requests to a holding page		
 		if($this->config->development->mode == 'development') {
     		if($currentPath == '/') {
@@ -161,6 +164,13 @@ class Weblynx_Controllers_Base extends Zend_Controller_Action
         // if there were errors, then these session variables have data (send it to the view)
         //$this->view->formErrors = Smart::ifsetor($_SESSION['formErrors'], null);
         //$this->view->prevPost   = Smart::ifsetor($_SESSION['prevPost'], null);
+        
+        // if we dont have an header, grab the default
+        if(!isset($this->view->pageHeader)) {
+            $header = $this->dbMapper->getPagesHeader();
+            $this->view->pageHeader  = $header['picture'];
+            $this->view->pageCaption = $header['caption'];
+        }
         
         // Get all our stuff into the template
         $this->getResponse()->appendBody($this->view->render($template));

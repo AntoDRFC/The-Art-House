@@ -55,11 +55,11 @@
             <p>Display Options<img src="/images/default.gif" alt="Default" width="16" height="17" class="first" /><img src="/images/clear.gif" alt="Clear" width="16" height="17" /><img src="/images/contrast.gif" alt="Contrast" width="15" height="17" /><span></span></p>
         </div><!-- end id="display-ops" -->
     <div id="slider_wrapper" style="overflow: hidden; clear: both;">
-        <img src="images/smaller_text.jpg" alt="Make text smaller" width="31" height="18" style="float: left;" id="smaller_text" />
+        <img src="/images/smaller_text.jpg" alt="Make text smaller" width="31" height="18" style="float: left;" id="smaller_text" />
         <div style="width: 135px; float: left; margin: 6px 2px 0 2px;">
            <div id="slider-range-min"></div>
         </div>
-        <img src="images/bigger_text.jpg" alt="Make text bigger" width="38" height="19" style="float: left;" id="bigger_text" />
+        <img src="/images/bigger_text.jpg" alt="Make text bigger" width="38" height="19" style="float: left;" id="bigger_text" />
     </div>
 </div><!-- end id="headerRight" -->
 </div><!-- end id="header" -->
@@ -72,10 +72,10 @@
 
 <div id="headerImage">
 <div id="headerImagePhoto">
-<a href="/"><img src="/images/HEADER.jpg" alt="" /></a>
+<a href="/"><img src="/images/headers/<?=$this->pageHeader?>" alt="<?=$this->pageCaption?>" /></a>
 </div><!-- end id="headerImagePhoto" -->
 <div id="headerImageCaption">
-<h1>Equality and Quality in Visual Arts...</h1>
+<h1><?=$this->pageCaption?></h1>
 </div><!-- end id="headerImageCaption" -->
 </div><!-- end id="headerImage" -->
 
@@ -112,7 +112,7 @@
 <div id="rightColumn">
 <div id="rightColumnLeft">
 <div class="rightColumnCalloutTop">
-<a href="/"><h3 class="rightColumnHome">get involved</h3></a>
+<a href="/view/get-involved"><h3 class="rightColumnHome">get involved</h3></a>
 </div><!-- end id="rightColumnCalloutTop" -->
 <div class="rightColumnCalloutMiddle">
 <a href="/"><img src="/images/CALLOUT_1.jpg" alt="get involved" /></a>

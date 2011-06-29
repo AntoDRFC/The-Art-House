@@ -236,6 +236,78 @@ class PagebuilderController extends Weblynx_Controllers_Base {
         $this->renderView('admin.phtml');
     }
     
+    public function defaultheaderAction() {
+        $header = $this->dbMapper->getPagesHeader();
+        $this->view->pageHeader = $header;
+        
+        $this->view->header_id = '';
+        $this->view->page_id   = '';
+        
+        $this->view->extraHeaderText = ' Default ';
+        $this->view->postUrl = '/pagebuilder/savedefaultheader/';
+        
+        $this->view->css[] = '/css/pagebuilder.css';
+        
+        $this->view->contentView = '/pagebuilder/header.phtml';
+        $this->renderView('admin.phtml');
+    }
+    
+    public function headerAction() {
+        $page_id = (int) $this->req->getParam('page');
+        
+        $header = $this->dbMapper->getPagesHeader($page_id);
+        $this->view->pageHeader = $header;
+        
+        $this->view->header_id = !empty($header['header_id']) ? $header['header_id'] : '';
+        $this->view->page_id = $page_id;
+        
+        $this->view->postUrl = '/pagebuilder/saveheader/';
+        
+        $this->view->css[] = '/css/pagebuilder.css';
+        
+        $this->view->contentView = '/pagebuilder/header.phtml';
+        $this->renderView('admin.phtml');
+    }
+    
+    public function savedefaultheaderAction() {
+        $caption = htmlentities($this->req->getParam('header_caption'));
+        
+        $saveCaption['setting_id']    = 5;
+        $saveCaption['setting_title'] = 'page_header_caption';
+        $saveCaption['setting_value'] = $caption;
+        
+        $upload = new Zend_File_Transfer_Adapter_Http();
+        $dest_dir = $this->config->paths->base . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'headers';
+        
+        if(!file_exists($dest_dir)){
+            if(!mkdir($dest_dir)){
+                throw new Exception("Could not create upload folder for the header images to go into.");
+            }
+        }
+        $upload->setDestination($dest_dir);
+
+        $allowed_extensions = 'jpg,jpeg,bmp,gif,png,tiff';
+        $upload->addValidator('Extension', false, array('extension' => $allowed_extensions, 'messages' => array(Zend_Validate_File_Extension::FALSE_EXTENSION => 'Invalid extension for file %value%')));
+
+        $files = $upload->getFileInfo();
+        foreach ($files as $file => $info) {
+            if($upload->isUploaded($info['name']) && $upload->isValid($info['name'])) {
+                $upload->receive($info['name']);
+                $savePicture['setting_id']    = 4;
+                $savePicture['setting_title'] = 'page_header';
+                $savePicture['setting_value'] = $info['name'];
+            } else {
+                throw new Exception('Error Reading Uploaded File.');
+            }
+        }
+        
+        if($this->dbMapper->saveRecord($saveCaption, 'cms_settings', 'setting_id') && $this->dbMapper->saveRecord($savePicture, 'cms_settings', 'setting_id')) {
+            $this->_redirect('/pagebuilder/');
+        } else {
+            throw new Exception('Failed to save default header, please go back and try again');
+        }
+    }
+    
     public function savetagsAction() {
         $save['meta_id'] = (int) $this->req->getParam('meta_id', null);
         $save['page_id'] = (int) $this->req->getParam('page_id');
@@ -248,6 +320,42 @@ class PagebuilderController extends Weblynx_Controllers_Base {
             $this->_redirect('/pagebuilder/');
         } else {
             throw new Exception('Failed to save tags, please go back and try again');
+        }
+    }
+    
+    public function saveheaderAction() {
+        $save['header_id'] = (int) $this->req->getParam('header_id', null);
+        $save['page_id']   = (int) $this->req->getParam('page_id');
+        
+        $save['caption'] = htmlentities($this->req->getParam('header_caption'));
+        
+        $upload = new Zend_File_Transfer_Adapter_Http();
+        $dest_dir = $this->config->paths->base . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'headers';
+        
+        if(!file_exists($dest_dir)){
+            if(!mkdir($dest_dir)){
+                throw new Exception("Could not create upload folder for the header images to go into.");
+            }
+        }
+        $upload->setDestination($dest_dir);
+
+        $allowed_extensions = 'jpg,jpeg,bmp,gif,png,tiff';
+        $upload->addValidator('Extension', false, array('extension' => $allowed_extensions, 'messages' => array(Zend_Validate_File_Extension::FALSE_EXTENSION => 'Invalid extension for file %value%')));
+
+        $files = $upload->getFileInfo();
+        foreach ($files as $file => $info) {
+            if($upload->isUploaded($info['name']) && $upload->isValid($info['name'])) {
+                $upload->receive($info['name']);
+                $save['picture'] = $info['name'];
+            } else {
+                throw new Exception('Error Reading Uploaded File.');
+            }
+        }
+        
+        if($this->dbMapper->saveRecord($save, 'page_headers', 'header_id')) {
+            $this->_redirect('/pagebuilder/');
+        } else {
+            throw new Exception('Failed to save header, please go back and try again');
         }
     }
     
