@@ -7,8 +7,8 @@
  * @version 1.0
  */
 
-class SignupController extends Weblynx_Controllers_Base {        
-    
+class SignupController extends Weblynx_Controllers_Base {
+
     public function indexAction() {
         $this->view->headJs[]    = '/js/jquery-1.4.4.js';
         $this->view->headJs[]    = '/js/signup.js';

@@ -71,6 +71,24 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
         return $metadata;
     }
     
+    public function getPagesHeader($page_id='') {
+        $sql = sprintf("SELECT * FROM page_headers WHERE page_id = %d", $page_id);
+        $header = $this->db->fetchRow($sql);
+        
+        if(!$header) {
+            $sql = "SELECT * FROM cms_settings WHERE setting_title LIKE 'page_header%'";
+            $headerArray = $this->db->fetchAll($sql);
+            
+            $header = array();
+            foreach($headerArray as $headerVar) {
+                $field = ($headerVar['setting_title'] == 'page_header') ? 'picture' : 'caption';
+                $header[$field] = $headerVar['setting_value'];
+            }
+        }
+        
+        return $header;
+    }
+    
     public function getBlogInfo($blog_id) {
         $sql = "SELECT * FROM blogs WHERE blog_id = " . $blog_id;
         
