@@ -21,7 +21,7 @@
     <tr>
         <td><a href="/artists/viewartist/id/<?=$members['id']?>"><?=$members['first_name']?> <?=$members['surname']?></a></td>                
         <td><?php if($members['email']): ?><a href="mailto:<?=$members['email']?>">Email artist</a><?php endif; ?></td>
-        <td><?php if($members['id']): ?><a href="/members/memberInfo/id/<?=$members['id']?>">EDIT</a> | <a href="/members/delete/id/<?=$members['id']?>">DELETE</a><?php endif; if($members['status'] !== 'approved'): ?><a href="/members/approve/id/<?=$members['id']?>"> | APPROVE</a><?php endif; ?></td>
+        <td><?php if($members['id']): ?><a href="/members/memberInfo/id/<?=$members['id']?>">EDIT</a> | <a href="/members/delete/id/<?=$members['id']?>">DELETE</a><?php endif; if($members['status'] !== 'approved'): ?><a href="/members/approve/id/<?=$members['id']?>"> | APPROVE</a><?php else: ?> <a href="/members/reject/id/<?=$members['id']?>"> | REJECT</a><?php endif; ?></td>
     </tr>
     <?php endforeach; ?>
 </table>
