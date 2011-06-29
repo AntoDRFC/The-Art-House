@@ -4,7 +4,7 @@
        
     echo '
     <form method="post" action="' . $this->link . '">
-    <input type="hidden" name="id" value="' . $_SESSION['id'] .'"/>
+    <input type="hidden" name="id" value="' . $this->artistId .'"/>
     <input type="text" name="first_name" value="' . $this->artist["first_name"] . '"/> First Name <br/>
     <input type="text" name="surname" value="' . $this->artist["surname"] . '"/> Surname <br/>';
     if(!empty($this->artist['organisation'])): echo '<input type="text" name="organisation" value="' . $this->artist["organisation"] . '"/> Organisation <br/>'; endif;    
