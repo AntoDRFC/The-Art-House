@@ -129,6 +129,69 @@ class SignupController extends Weblynx_Controllers_Base {
         $linkAddress['address_id'] = $addressId;
         $this->dbMapper->saveRecord($linkAddress, 'artists_addresses', '');
         
+        // send the email
+        $tr = new Zend_Mail_Transport_Sendmail('-f' . 'info@thearthouse.org.uk');
+            Zend_Mail::setDefaultTransport($tr);
+            
+            $htmlmessage  = sprintf('<p>Dear %s %s,
+
+                Thanks for your application to be a %s, here is a copy of the details you provided:
+
+                First Name: %1s
+                <br/>
+                Surname: %2s
+                <br/>
+                Email: %s
+                <br/>
+                Mobile: %s
+                <br/>
+                Telephone: %s
+                <br/>
+                Website: %s
+                <br/>
+                <br/>                
+                Address Line One: %s
+                <br/>
+                Address Line Two: %s
+                <br/>
+                Address Line Three: %s
+                <br/>
+                City: %s
+                <br/>
+                Postcode: %s
+                <br/>
+                County: %s
+                <br/>
+                Country: %s                
+                <br/>
+                <br/>
+
+                Once again, thank you for your application
+                The Art House</p>',
+                $userData['first_name'],
+                $userData['surname'],
+                $memberType,
+                $userData['email'],
+                $userData['mobile'],
+                $userData['telephone'],
+                $userData['website'],
+                $address['line_one'],
+                $address['line_two'],
+                $address['line_three'],
+                $address['city'],
+                $address['postcode'],
+                $address['county'],
+                $address['country']
+            );
+            
+            $mail = new Zend_Mail();
+            $mail->setSubject('Patron signup');
+            $mail->setBodyHtml('test');
+            $mail->setFrom('info@thearthouse.org.uk');
+            $mail->addTo('bayesshelton.oliver@gmail.com');
+            $mail->send();
+        
+        
         // redirect
         $this->_redirect('/view/signupthanks');
 
