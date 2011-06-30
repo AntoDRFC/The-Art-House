@@ -4,14 +4,24 @@
 
 <p id="artist_nav"><a href="/artists/biography/id/<?=$this->artist['id']?>"><img src="/images/artist_biography.jpg" alt="Biography" width="177" height="28" /></a> <a href="/artists/news/id/<?=$this->artist['id']?>"><img src="/images/artist_news.jpg" alt="News" width="177" height="28" /></a> <a href="/artists/viewartist/id/<?=$this->artist['id']?>"><img src="/images/artist_artwork.jpg" alt="Artwork" width="177" height="28" /></a></p>
 
-<?php if($this->artistNews): ?>
-    <?php foreach($this->artistNews as $news): ?>
-        <div>
-            <h3><?=$news['title']?></h3>
-            <h4><?=Globals::dateMysqlToUk($news['newsdate'])?></h4>
-            <p><?=$news['content']?></p>
-            <img src="/images/artist_uploads/<?=$this->artist['id'];?>/<?=$news['news_image']?>"/>
-        </div>
-        <hr/>
-    <?php endforeach; ?>
-<?php endif; ?>       
+<form method="post" action="/artists/savenews/" enctype="multipart/form-data">      
+     
+    <ul class="form">
+        <li>
+            <label class="desc">Title</label>
+            <input type="text" name="title"/>
+        </li>
+        <li>
+            <label class="desc">Image</label>
+            <input type="file" name="picture" />
+        </li>
+        <li>
+            <label class="desc">Content</label>
+            <textarea name="content"></textarea>
+        </li>
+        <li>
+            <input type="submit" name="submitbutton" value="Create"/>
+        </li>
+    </ul>
+
+</form>
