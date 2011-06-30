@@ -1,9 +1,5 @@
-<p><img src="/images/find_artist_header.jpg" alt="Find an Artist" width="747" height="52" /></p>
-
-<h2>Welcome to the members directory</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget tempor arcu. Aliquam quis dolor leo, quis suscipit felis. Praesent tempus lacus quis sapien vestibulum et placerat urna sagittis. Integer massa odio, accumsan ac rhoncus id, ultricies vel nisl. Aenean et adipiscing magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est nunc, semper ac luctus vel, cursus nec nisl.</p>
-
-<p id="alphabet">
+<p style="font-size: 16px;">Filter List</p>
+<p style="font-size: 14px; margin-bottom: 20px;" id="alphabet">
 <?php foreach(range('a','z') as $i): ?>
     <a href="/members/index/filter-char/<?=$i?>"<?php if($this->showall == $i): ?> class="current"<?php endif; ?>><?=$i?></a> <?php if($i != 'z'): ?>|<?php endif; ?>
 <?php endforeach; ?>
@@ -13,15 +9,17 @@
 </p>
 <table cellspacing="0" id="artist_listing">
     <tr>
-        <th><img src="/images/artist_name.jpg" alt="Name" width="177" height="28" /></th>
-        <th><img src="/images/artist_email.jpg" alt="Email" width="177" height="28" /></th>
-        <th>Action</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>&nbsp;</th>
     </tr>
     <?php foreach($this->membersList as $members): ?>
     <tr>
-        <td><a href="/artists/viewartist/id/<?=$members['id']?>"><?=$members['first_name']?> <?=$members['surname']?></a></td>                
-        <td><?php if($members['email']): ?><a href="mailto:<?=$members['email']?>">Email artist</a><?php endif; ?></td>
-        <td><?php if($members['id']): ?><a href="/members/memberInfo/id/<?=$members['id']?>">EDIT</a> | <a href="/members/delete/id/<?=$members['id']?>">DELETE</a><?php endif; if($members['status'] !== 'approved'): ?><a href="/members/approve/id/<?=$members['id']?>"> | APPROVE</a><?php else: ?> <a href="/members/reject/id/<?=$members['id']?>"> | REJECT</a><?php endif; ?></td>
+        <td><?=$members['first_name']?> <?=$members['surname']?></td>
+        <td><?=$members['email']?></td>
+        <td width="80px;"><?=$members['status']?></td>
+        <td width="300px"><?php if($members['status'] == 'approved'): ?><a href="/members/memberInfo/id/<?=$members['id']?>" class="button">Edit</a><?php endif; ?><a href="/members/delete/id/<?=$members['id']?>" class="button">Delete</a><?php if($members['status'] !== 'approved'): ?><a href="/members/approve/id/<?=$members['id']?>" class="button">Approve</a> <a href="/members/reject/id/<?=$members['id']?>" class="button">Reject</a><?php endif; ?></td>
     </tr>
     <?php endforeach; ?>
 </table>
