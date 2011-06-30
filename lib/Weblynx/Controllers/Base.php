@@ -46,9 +46,9 @@ class Weblynx_Controllers_Base extends Zend_Controller_Action
 			$currentPath = '/';
 		}		                
                 
-		/*if(str_replace('/', '', $currentPath) == 'admin') {
+		if(str_replace('/', '', $currentPath) == 'admin') {
 		  $this->_redirect('/admin/login.php');                                 
-		} */                                
+		}                                
 
 		// setup config object
 		$this->config = Zend_Registry::get('config');

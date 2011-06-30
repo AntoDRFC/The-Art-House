@@ -42,14 +42,12 @@ class ArtistsController extends Weblynx_Controllers_Base {
     }
     
     public function homeAction() {
-        
         $this->view->artistId = $this->req->getParam('id');
         
-        $this->view->headJs[]    = '/js/jquery-1.4.4.js';                       
         $this->view->contentView = '/artist/home.phtml';
         
         $this->view->artist  = $this->dbMapper->getArtist($this->view->artistId);
-        $this->view->address = $this->dbMapper->getAddress($this->view->artistId);                
+        /* $this->view->address = $this->dbMapper->getAddress($this->view->artistId);                 */
         
         $this->renderView();
     }

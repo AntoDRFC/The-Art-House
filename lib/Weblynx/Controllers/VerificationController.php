@@ -14,8 +14,7 @@ class VerificationController extends Weblynx_Controllers_Base {
     protected $primary_key = 'id';
     
     public function indexAction() {
-        
-        $this->view->headJs[]    = '/js/jquery-1.4.4.js';                
+                       
         $this->view->contentView = '/verification/index.phtml';
         
         $this->view->univerifiedArtist = $this->dbMapper->getAdminVerification();
