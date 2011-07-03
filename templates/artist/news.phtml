@@ -9,8 +9,7 @@
         <div>
             <h3><?=$news['title']?></h3>
             <h4><?=Globals::dateMysqlToUk($news['newsdate'])?></h4>
-            <p><?=$news['content']?></p>
-            <img src="/images/artist_uploads/<?=$this->artist['id'];?>/<?=$news['news_image']?>"/>
+            <p><?=$news['content']?></p>            
         </div>
         <hr/>
     <?php endforeach; ?>

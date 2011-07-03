@@ -1,0 +1,35 @@
+<p><img src="/images/find_artist_header.jpg" alt="Find an Artist" width="747" height="52" /></p>
+
+<h2>Current content awaiting approval</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget tempor arcu. Aliquam quis dolor leo, quis suscipit felis. Praesent tempus lacus quis sapien vestibulum et placerat urna sagittis. Integer massa odio, accumsan ac rhoncus id, ultricies vel nisl. Aenean et adipiscing magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est nunc, semper ac luctus vel, cursus nec nisl.</p>
+
+<strong>News</strong>
+<hr/>
+
+<?php foreach($this->news as $newsContent): ?>
+    
+    <?=$newsContent['title']?>
+    <br/><br/>
+    <?=$newsContent['content']?>
+    <br/><br/>
+    <img src="/images/artist_uploads/<?=$newsContent['artist_id']?>/<?=$newsContent['news_image']?>" width="50" height="50" class="artworkimg" />
+    <br/><br/><br/><br/>
+    <a href="/members/newsdecision/id/<?=$newsContent['news_id']?>/decision/1">Approve</a> | <a href="/members/newsdecision/id/<?=$newsContent['news_id']?>/decision/0">Deny</a>
+    <br/><br/><br/><br/>
+<?php endforeach; ?>
+
+
+
+<strong>Work</strong>
+<hr/>
+
+<?php foreach($this->work as $workContent): ?>
+    <?=$workContent['title']?>
+    <br/><br/>
+    <?=$workContent['about_artwork']?>
+    <br/><br/>
+    <img src="/images/artist_uploads/<?=$workContent['artist_id']?>/<?=$workContent['picture']?>" width="50" height="50" class="artworkimg" />
+    <br/><br/><br/><br/>
+    <a href="/members/workdecision/id/<?=$workContent['work_id']?>/decision/Y">Approve</a> | <a href="/members/workdecision/id/<?=$workContent['work_id']?>/decision/N">Deny</a>
+    <br/><br/><br/><br/>    
+<?php endforeach; ?>
