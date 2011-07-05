@@ -1,0 +1,130 @@
+<h1>Edit Member Details</h1>
+
+<form method="post" action="/members/update/">
+<input type="hidden" name="id" value="<?=$this->artistId?>"/>
+<ul class="form">
+    <li>
+        <label class="desc">First Name</label>
+        <input type="text" name="first_name" value="<?=$this->artist["first_name"]?>" />
+    </li>
+    <li>
+        <label class="desc">Surname</label>
+        <input type="text" name="surname" value="<?=$this->artist["surname"]?>" />
+    </li>
+    <li>
+        <label class="desc">Organisation</label>
+        <input type="text" name="organisation" value="<?=$this->artist["organisation"]?>" />
+    </li>
+    <li>
+        <label class="desc">Address line one</label>
+        <input type="text" name="line_one" value="<?=$this->artist["line_one"]?>" />
+    </li>
+    <li>
+        <label class="desc">Address line two</label>
+        <input type="text" name="line_two" value="<?=$this->artist["line_two"]?>" />
+    </li>
+    <li>
+        <label class="desc">Address line three</label>
+        <input type="text" name="line_three" value="<?=$this->artist["line_three"]?>" />
+    </li>
+    <li>
+        <label class="desc">City</label>
+        <input type="text" name="city" value="<?=$this->artist["city"]?>" />
+    </li>
+    <li>
+        <label class="desc">County</label>
+        <input type="text" name="county" value="<?=$this->artist["county"]?>" />
+    </li>
+    <li>
+        <label class="desc">Country</label>
+        <input type="text" name="country" value="<?=$this->artist["country"]?>" />
+    </li>
+    <li>
+        <label class="desc">Postcode</label>
+        <input type="text" name="postcode" value="<?=$this->artist["postcode"]?>" />
+    </li>
+    <li>
+        <label class="desc">Telephone</label>
+        <input type="text" name="telephone" value="<?=$this->artist["telephone"]?>" />
+    </li>
+    <li>
+        <label class="desc">Mobile</label>
+        <input type="text" name="mobile" value="<?=$this->artist["mobile"]?>" />
+    </li>
+    <li>
+        <label class="desc">Email</label>
+        <input type="text" name="email" value="<?=$this->artist["email"]?>" />
+    </li>
+    <li>
+        <label class="desc">Password (leave blank to preserve)</label>
+        <input type="password" name="password" />
+    </li>
+    <li>
+        <label class="desc">Website</label>
+        <input type="text" name="website" value="<?=$this->artist["website"]?>" />
+    </li>
+    <li><input type="submit" value="Update member details" /></li>
+</ul>
+</form>
+
+<?php
+/*
+    echo '
+    <form method="post" action="' . $this->link . '">
+    <input type="hidden" name="id" value="' . $this->artistId .'"/>
+    <input type="text" name="first_name" value="' . $this->artist["first_name"] . '"/> First Name <br/>
+    <input type="text" name="surname" value="' . $this->artist["surname"] . '"/> Surname <br/>';
+    if(!empty($this->artist['organisation'])): echo '<input type="text" name="organisation" value="' . $this->artist["organisation"] . '"/> Organisation <br/>'; endif;    
+    echo '<input type="text" name="addressOne" value="' . $this->artist["line_one"] . '"/> Address line one <br/>
+    <input type="text" name="addressTwo" value="' . $this->artist["line_two"] . '"/> Address line two <br/>
+    <input type="text" name="addressThree" value="' . $this->artist["line_three"] . '"/> Address line three <br/>
+    <input type="text" name="city" value="' . $this->artist["city"] . '"/> City <br/>
+    <input type="text" name="county" value="' . $this->artist["county"] . '"/> County <br/>
+    <input type="text" name="country" value="' . $this->artist["country"] . '"/> Country <br/>
+    <input type="text" name="postcode" value="' . $this->artist["postcode"] . '"/> Postcode <br/>
+    <input type="text" name="telephone" value="' . $this->artist["telephone"] . '"/> Telephone <br/>
+    <input type="text" name="mobile" value="' . $this->artist["mobile"] . '"> Mobile <br/>
+    <input type="text" name="email" value="' . $this->artist["email"] . '"/> Email <br/>
+    <input type="text" name="website" value="' . $this->artist["website"] . '"/> Website <br/>                                                  
+    <input type="password" name="password"/> Password <br/>';
+    if($this->artist['member_type'] != 'Supporter') {
+    echo '<br/><br/>
+    <p>More iformatiom</p>                
+    <br/>
+    <br/>
+    Art Form (select from the following)
+    <br/>
+    <input type="checkbox" name="artForm" value="2D"/> 2D <br/>
+    <input type="checkbox" name="artForm" value="3DObject"/> 3D Object <br/>
+    <input type="checkbox" name="artForm" value="publicArt"/> Public Art <br/>
+    <input type="checkbox" name="artForm" value="drawing"/> Drawing <br/>
+    <input type="checkbox" name="artForm" value="filmVideo"/> Film &amp; video <br/>
+    <input type="checkbox" name="artForm" value="installation"/> Installation <br/>
+    <input type="checkbox" name="artForm" value="mixedMedia"/> Mixed media <br/>
+    <input type="checkbox" name="artForm" value="painting"/> Painting <br/>
+    <input type="checkbox" name="artForm" value="performance"/> Performance <br/>
+    <input type="checkbox" name="artForm" value="photography"/> Photography <br/>
+    <input type="checkbox" name="artForm" value="print"/> Print <br/>
+    <input type="checkbox" name="artForm" value="sculpture"/> Sculpture <br/>
+    <input type="checkbox" name="artForm" value="sound"/> Sound <br/>
+    <input type="checkbox" name="artForm" value="textiles"/> Textiles <br/>
+    <input type="checkbox" name="artForm" value="jewellery"/> Jewellery <br/>
+    <input type="checkbox" name="artForm" value="design"/> Design <br/>
+    <br/>
+    <br/>
+    Activity
+    <br/>
+    <input type="checkbox" name="activity" value="exhibitions"/> Exhibitions <br/>
+    <input type="checkbox" name="activity" value="commissions"/> Commissions <br/>
+    <input type="checkbox" name="activity" value="residency"/> Residency <br/>
+    <input type="checkbox" name="activity" value="selling"/> Selling <br/>
+    <input type="checkbox" name="activity" value="workshopTeaching"/> Workshop/Teaching <br/>
+    <input type="checkbox" name="activity" value="collaborations"/> Collaborations <br/>
+    Artist Statement<br /><textarea name="statement" style="width: 500px; height: 80px;">'.$this->artist['statement'].'</textarea> <br/>
+    Other<br /><textarea name="other" style="width: 500px; height: 80px;">'.$this->artist['other_experience'].'</textarea> <br/>';
+    }
+    echo '<br/>
+    <br/>
+    <input type="submit" value="Update"/>';
+*/
+?>

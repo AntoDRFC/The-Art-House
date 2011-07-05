@@ -1,18 +1,20 @@
 <?php
 
-    echo '<strong>Welcome ' . $this->artist['first_name'] . ' your details are as followed</strong><br/><br/>';         
+    echo '<strong>Welcome ' . $this->artist['first_name'] . ' ' . $this->artist['surname']  . ' your details are as followed</strong><br/><br/>';         
        
     echo '
-    <form method="post" action="/artist/update/">
-    <input type="hidden" name="id" value="' . $_SESSION['id'] . '"/>
+    <form method="post" action="' . $this->link . '">
+    <input type="hidden" name="id" value="' . $_SESSION['id'] .'"/>
     <input type="text" name="first_name" value="' . $this->artist["first_name"] . '"/> First Name <br/>
     <input type="text" name="surname" value="' . $this->artist["surname"] . '"/> Surname <br/>';
     if(!empty($this->artist['organisation'])): echo '<input type="text" name="organisation" value="' . $this->artist["organisation"] . '"/> Organisation <br/>'; endif;    
-    echo '<input type="text" name="addressOne" value="' . $this->address["lineOne"] . '"/> Address line one <br/>
-    <input type="text" name="addressTwo" value="' . $this->address["lineTwo"] . '"/> Address line two <br/>
-    <input type="text" name="city" value="' . $this->address["city"] . '"/> City <br/>
-    <input type="text" name="county" value="' . $this->address["county"] . '"/> County <br/>
-    <input type="text" name="country" value="' . $this->address["country"] . '"/> Country <br/>
+    echo '<input type="text" name="addressOne" value="' . $this->artist["lineOne"] . '"/> Address line one <br/>
+    <input type="text" name="addressTwo" value="' . $this->artist["lineTwo"] . '"/> Address line two <br/>
+    <input type="text" name="addressThree" value="' . $this->artist["lineThree"] . '"/> Address line three <br/>
+    <input type="text" name="city" value="' . $this->artist["city"] . '"/> City <br/>
+    <input type="text" name="county" value="' . $this->artist["county"] . '"/> County <br/>
+    <input type="text" name="country" value="' . $this->artist["country"] . '"/> Country <br/>
+    <input type="text" name="postcode" value="' . $this->artist["postcode"] . '"/> Postcode <br/>
     <input type="text" name="telephone" value="' . $this->artist["telephone"] . '"/> Telephone <br/>
     <input type="text" name="mobile" value="' . $this->artist["mobile"] . '"> Mobile <br/>
     <input type="text" name="email" value="' . $this->artist["email"] . '"/> Email <br/>

@@ -1,0 +1,25 @@
+<p style="font-size: 16px;">Filter List</p>
+<p style="font-size: 14px; margin-bottom: 20px;" id="alphabet">
+<?php foreach(range('a','z') as $i): ?>
+    <a href="/members/index/filter-char/<?=$i?>"<?php if($this->showall == $i): ?> class="current"<?php endif; ?>><?=$i?></a> <?php if($i != 'z'): ?>|<?php endif; ?>
+<?php endforeach; ?>
+<?php if($this->showall): ?>
+| <a href="/members">show all</a>
+<?php endif; ?>
+</p>
+<table cellspacing="0" id="artist_listing">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach($this->membersList as $members): ?>
+    <tr>
+        <td><?=$members['first_name']?> <?=$members['surname']?></td>
+        <td><?=$members['email']?></td>
+        <td width="80px;"><?=$members['status']?></td>
+        <td width="300px"><?php if($members['status'] == 'approved'): ?><a href="/members/memberInfo/id/<?=$members['id']?>" class="button">Edit</a><?php endif; ?><a href="/members/delete/id/<?=$members['id']?>" class="button">Delete</a><?php if($members['status'] !== 'approved'): ?><a href="/members/approve/id/<?=$members['id']?>" class="button">Approve</a> <a href="/members/reject/id/<?=$members['id']?>" class="button">Reject</a><?php endif; ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>

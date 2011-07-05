@@ -44,11 +44,10 @@ class ArtistsController extends Weblynx_Controllers_Base {
     public function homeAction() {
         $this->view->artistId = $this->req->getParam('id');
         
-        $this->view->contentView = '/artist/home.phtml';
-        
         $this->view->artist  = $this->dbMapper->getArtist($this->view->artistId);
         /* $this->view->address = $this->dbMapper->getAddress($this->view->artistId);                 */
-        
+
+        $this->view->contentView = '/artist/home.phtml';        
         $this->renderView();
     }
     
@@ -64,7 +63,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
     
     public function updateAction() {                
         
-        $userData['id']                          = $_SESSION['id'];
+        $userData['id']                          = $_SESSION['id'];;
         $userData['first_name']                  = htmlentities($this->req->getParam('first_name'));
         $userData['surname']                     = htmlentities($this->req->getParam('surname'));
         $userData['telephone']                   = htmlentities($this->req->getParam('telephone'));
@@ -74,16 +73,22 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $userData['password']                    = htmlentities($this->req->getParam('password'));
         $userData['organisation']                = htmlentities($this->req->getParam('organisation'));
         
-        $address['artistId']    = $_SESSION['id'];
-        $address['lineOne']    = $this->req->getParam('addressOne');
-        $address['lineTwo']    = $this->req->getParam('addressTwo');
-        $address['city']       = $this->req->getParam('city');
-        $address['county']     = $this->req->getParam('county');
-        $address['country']    = $this->req->getParam('country');
+        $addressId = $this->dbMapper->getArtist($userData['id']);  
         
-        $this->dbMapper->saveRecord($userData, 'artists', 'id',  $_SESSION['id']);           
-        $this->dbMapper->saveRecord($address, 'addresses', 'artistId', $_SESSION['id']);           
-        //$this->dbMapper->updateAddress($address);                                         
+        // Address
+        $address['address_id'] = $addressId['address_id'];
+        $address['line_one']   = $this->req->getParam('addressOne');
+        $address['line_two']   = $this->req->getParam('addressTwo');
+        $address['line_three'] = $this->req->getParam('addressThree');
+        $address['city']       = $this->req->getParam('city');
+        $address['postcode']   = $this->req->getParam('postcode');
+        $address['county']     = $this->req->getParam('county');
+        $address['country']    = $this->req->getParam('country');                              
+        
+        // get saved id and pass that into $userDataAddress
+        $this->dbMapper->saveRecord($address, 'addresses', 'address_id');        
+        $this->dbMapper->saveRecord($userData, 'artists', 'id');  
+        
         $this->_redirect('/artist/home/artistId/' . $_SESSION['id']);
     }
     

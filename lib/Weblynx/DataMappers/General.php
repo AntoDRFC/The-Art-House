@@ -181,6 +181,17 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
         return $this->db->fetchAll($sql);                 
     }
     
+    public function getMembers($filterChar) {
+        $sql = "SELECT * FROM artists WHERE first_name LIKE '" . $filterChar . "%' ORDER BY first_name ASC";
+        return $this->db->fetchAll($sql);                 
+    }
+    
+    public function deleteMember($table, $key, $value) {
+        $removeSyntax = sprintf('%s = %d', $key, $value);
+        
+        return $this->db->delete($table, $removeSyntax);
+    }
+    
     public function getArtist($artistId) {
         $sql = "SELECT
                     artists.*,
@@ -207,8 +218,8 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
     }
     
     public function getAddress($artistId) {
-       $sql = "SELECT * FROM addresses WHERE artistId = '" . $artistId . "' OR artistIdTwo = '" . $artistId . "' ";    
-       return $this->db->fetchRow($sql); 
+       //$sql = "SELECT * FROM addresses WHERE artistId = '" . $artistId . "' OR artistIdTwo = '" . $artistId . "' ";    
+       //return $this->db->fetchRow($sql); 
     }
     
     public function getAdminVerification() {
