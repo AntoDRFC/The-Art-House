@@ -212,7 +212,7 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
     }
     
     public function getArtistNews($artistId) {
-        $sql = sprintf("SELECT * FROM artists_news WHERE artist_id = %d AND approved = '1'", $artistId);
+        $sql = sprintf("SELECT * FROM artists_news WHERE artist_id = %d AND approved = 'Y'", $artistId);
         
         return $this->db->fetchAll($sql);
     }
