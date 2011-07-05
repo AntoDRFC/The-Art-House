@@ -206,13 +206,13 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
     }
     
     public function getArtistWork($artistId) {
-        $sql = sprintf("SELECT * FROM artists_work WHERE artist_id = %d ORDER BY title ASC", $artistId);
+        $sql = sprintf("SELECT * FROM artists_work WHERE artist_id = %d AND approved = 'Y' ORDER BY title ASC ", $artistId);
         
         return $this->db->fetchAll($sql);
     }
     
     public function getArtistNews($artistId) {
-        $sql = sprintf("SELECT * FROM artists_news WHERE artist_id = %d", $artistId);
+        $sql = sprintf("SELECT * FROM artists_news WHERE artist_id = %d AND approved = 'Y'", $artistId);
         
         return $this->db->fetchAll($sql);
     }
@@ -231,6 +231,16 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
         $sql = "SELECT * FROM artists WHERE email = '" . $email . "' AND password = '" . $password . "' AND status = 'approved'";       
         return $this->db->fetchRow($sql);
     }
+    
+    public function getUnApprovedNews() {
+        $sql = "SELECT * FROM artists_news WHERE approved = '0'";       
+        return $this->db->fetchAll($sql);
+    }    
+    
+    public function getUnApprovedWork() {
+        $sql = "SELECT * FROM artists_work WHERE approved = 'N'";       
+        return $this->db->fetchAll($sql);
+    }   
     
     /*public function setAdminVerificationActive($artistId) {
         $this->db->update($table, $data, $primary_key . ' = ' . $pk_id);
