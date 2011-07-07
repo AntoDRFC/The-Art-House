@@ -33,6 +33,11 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->view->metaTitle   = 'Artists Artwork';
         
         $this->view->contentView = '/artist/artwork.phtml';
+        
+        //if($_SESSION['id'] == $this->view->artist["artist_id"]) {
+            $this->view->showLinks = true;
+       // }
+        
         $this->renderView();
     }
     
