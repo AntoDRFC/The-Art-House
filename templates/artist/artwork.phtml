@@ -7,12 +7,18 @@
 <?php if($this->work): ?>
     <?php foreach($this->work as $work): ?>
         <div class="artistswork">
-            <img src="/images/artist_uploads/<?=$this->artist['id']?>/<?=$work['picture']?>" width="430" alt="<?=$work['title']?>" class="artworkimg" />
             <div class="artwork_info">
                 <h3><?=$work['title']?></h3>
                 <?php if($work['credits']): ?>
                     <p class="artwork_credits"><?=$work['credits']?></p>
                 <?php endif; ?>
+                <?php if($work['size']): ?>
+                    <p class="artwork_credits">Size of work: <?=$work['size']?></p>
+                <?php endif; ?>
+                <?php if($work['price']): ?>
+                    <p class="artwork_credits">Price: <?=$work['price']?></p>
+                <?php endif; ?>
+                <img src="/images/artist_uploads/<?=$this->artist['id']?>/<?=$work['picture']?>" width="430" alt="<?=$work['title']?>" />
                 <h4 class="artwork_about_header">About this artwork</h4>
                 <p class="artwork_about"><?=$work['about_artwork']?></p>
             </div>

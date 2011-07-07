@@ -1,6 +1,6 @@
 <p><img src="/images/find_artist_header.jpg" alt="Find an Artist" width="747" height="52" /></p>
 
-<h2>Welcome to the artist directory</h2>
+<h2>welcome to the artist directory</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget tempor arcu. Aliquam quis dolor leo, quis suscipit felis. Praesent tempus lacus quis sapien vestibulum et placerat urna sagittis. Integer massa odio, accumsan ac rhoncus id, ultricies vel nisl. Aenean et adipiscing magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras est nunc, semper ac luctus vel, cursus nec nisl.</p>
 
 <p id="alphabet">
@@ -13,17 +13,22 @@
 </p>
 <table cellspacing="0" id="artist_listing">
     <tr>
-        <th><img src="/images/artist_name.jpg" alt="Name" width="177" height="28" /></th>
-        <th><img src="/images/artist_organisation.jpg" alt="Organisation" width="177" height="28" /></th>
-        <th><img src="/images/artist_website.jpg" alt="Website" width="177" height="28" /></th>
-        <th><img src="/images/artist_email.jpg" alt="Email" width="177" height="28" /></th>
+        <th><img src="/images/artist_name.jpg" alt="Name or Organisation" width="226" height="28" /></th>
+        <th><img src="/images/artist_website.jpg" alt="Website" width="206" height="28" /></th>
+        <th><img src="/images/artist_contact.jpg" alt="Contact" width="273" height="28" /></th>
     </tr>
     <?php foreach($this->artistsList as $artist): ?>
     <tr>
         <td><a href="/artists/viewartist/id/<?=$artist['id']?>"><?=$artist['first_name']?> <?=$artist['surname']?></a></td>
-        <td><?=$artist['organisation']?></td>
+        <!-- <td><?=$artist['organisation']?></td> -->
         <td><?php if($artist['website']): ?><a href="<?=$artist['website']?>">Visit website</a><?php endif; ?></td>
-        <td><?php if($artist['email']): ?><a href="mailto:<?=$artist['email']?>">Email artist</a><?php endif; ?></td>
+        <td>
+            <?php if($artist['telephone']): ?>
+                <?=$artist['telephone']?>
+            <?php elseif($artist['email']): ?>
+                <a href="mailto:<?=$artist['email']?>">Email artist</a>
+            <?php endif; ?>
+        </td>
     </tr>
     <?php endforeach; ?>
 </table>

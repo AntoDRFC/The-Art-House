@@ -670,31 +670,32 @@ ul#mainnav li.hidden {
 }
 .artistswork {
     padding: 12px 10px;
-    background: #716da0;
     overflow: hidden;
 }
-.artworkimg {
-    float: left;
-}
 .artwork_info {
-    margin-left: 466px;
     padding-top: 8px;
 }
 .artwork_info h3 {
     font-size: 22px;
-    color: #ffffff;
+    color: #535353;
     font-weight: normal;
 }
 .artwork_credits {
-    color: #ffffff;
+    color: #535353;
     font-size: 14px;
 }
+.artwork_info p {
+    margin: 0;
+}
+.artwork_info img {
+    margin: 10px 0;
+}
 .artwork_about_header {
-    color: #ffffff;
+    color: #535353;
     font-size: 16px;
-    margin-top: 26px;
+    margin-top: 10px;
     margin-bottom: 8px;
 }
 .artwork_about {
-    color: #ffffff;
+    color: #535353;
 }

@@ -3,30 +3,37 @@
 <h2>News</h2>
 <hr/>
 
-<?php foreach($this->news as $newsContent): ?>
-    
-    <?=$newsContent['title']?>
-    <br/><br/>
-    <?=$newsContent['content']?>
-    <br/><br/>
-    <img src="/images/artist_uploads/<?=$newsContent['artist_id']?>/<?=$newsContent['news_image']?>" width="50" height="50" class="artworkimg" />
-    <br/><br/><br/><br/>
-    <a href="/members/newsdecision/id/<?=$newsContent['news_id']?>/decision/1">Approve</a> | <a href="/members/newsdecision/id/<?=$newsContent['news_id']?>/decision/0">Deny</a>
-    <br/><br/><br/><br/>
-<?php endforeach; ?>
+<?php if(count($this->news)): ?>
+    <?php foreach($this->news as $newsContent): ?>
+        <?=$newsContent['title']?>
+        <br/><br/>
+        <?=$newsContent['content']?>
+        <br/><br/>
+        <img src="/images/artist_uploads/<?=$newsContent['artist_id']?>/<?=$newsContent['news_image']?>" width="50" height="50" class="artworkimg" />
+        <br/><br/><br/><br/>
+        <a href="/members/newsdecision/id/<?=$newsContent['news_id']?>/decision/1">Approve</a> | <a href="/members/newsdecision/id/<?=$newsContent['news_id']?>/decision/0">Deny</a>
+        <br/><br/><br/><br/>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No artist news is waiting for approval</p>
+<?php endif; ?>
 
 
 
 <h2>Work</h2>
 <hr/>
 
-<?php foreach($this->work as $workContent): ?>
-    <?=$workContent['title']?>
-    <br/><br/>
-    <?=$workContent['about_artwork']?>
-    <br/><br/>
-    <img src="/images/artist_uploads/<?=$workContent['artist_id']?>/<?=$workContent['picture']?>" width="50" height="50" class="artworkimg" />
-    <br/><br/><br/><br/>
-    <a href="/members/workdecision/id/<?=$workContent['work_id']?>/decision/Y">Approve</a> | <a href="/members/workdecision/id/<?=$workContent['work_id']?>/decision/N">Deny</a>
-    <br/><br/><br/><br/>    
-<?php endforeach; ?>
+<?php if(count($this->work)): ?>
+    <?php foreach($this->work as $workContent): ?>
+        <?=$workContent['title']?>
+        <br/><br/>
+        <?=$workContent['about_artwork']?>
+        <br/><br/>
+        <img src="/images/artist_uploads/<?=$workContent['artist_id']?>/<?=$workContent['picture']?>" width="50" height="50" class="artworkimg" />
+        <br/><br/><br/><br/>
+        <a href="/members/workdecision/id/<?=$workContent['work_id']?>/decision/Y">Approve</a> | <a href="/members/workdecision/id/<?=$workContent['work_id']?>/decision/N">Deny</a>
+        <br/><br/><br/><br/>    
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No artist work is waiting for approval</p>
+<?php endif; ?>
