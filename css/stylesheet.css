@@ -632,7 +632,20 @@ ul#mainnav li.hidden {
 	display:none;
 }
 
-
+/** Artist pages **/
+#saerchArtists {
+    background: #5f5f5f;
+    padding: 16px 14px;
+    margin-bottom: 10px;
+}
+#saerchArtists h2 {
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 25px;
+}
+#saerchArtists label.desc {
+    color: #ffffff;
+}
 
 /** Artist Listing Page **/
 #alphabet, #alphabet a {

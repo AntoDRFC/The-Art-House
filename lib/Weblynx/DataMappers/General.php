@@ -176,8 +176,29 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
         return $this->db->delete($table, $removeSyntax);
     }
     
-    public function getArtists($filterChar) {
-        $sql = "SELECT * FROM artists WHERE status = 'approved' AND first_name LIKE '" . $filterChar . "%' ORDER BY first_name ASC";
+    public function getArtists($filter) {
+        $sql = "SELECT * FROM artists WHERE status = 'approved' AND %s ORDER BY first_name ASC";
+        
+        $where = array();
+        if(isset($filter['filterChar'])) {
+            $where[] = "first_name LIKE '" . $filter['filterChar'] . "%'";
+        }
+        
+        if(isset($filter['name'])) {
+            $where[] = "first_name LIKE '%" . $filter['name'] . "%' OR surname LIKE '%" . $filter['name'] . "%'";
+        }
+        
+        if(isset($filter['artform'])) {
+            //$where[] = "first_name LIKE '%" . $filter['name'] . "%' OR surname LIKE '%" . $filter['name'] . "%'";
+        }
+        
+        if(isset($filter['activity'])) {
+            //$where[] = "first_name LIKE '%" . $filter['name'] . "%' OR surname LIKE '%" . $filter['name'] . "%'";
+        }
+        
+        $whereClaus = count($where) ? implode(' AND ', $where) : '1';
+        $sql = sprintf($sql, $whereClaus);
+        
         return $this->db->fetchAll($sql);                 
     }
     

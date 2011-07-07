@@ -10,13 +10,17 @@
 class ArtistsController extends Weblynx_Controllers_Base {
     
     public function indexAction() {
-        $filterChar = $this->req->getParam('filter-char');
-        $this->view->artistsList = $this->dbMapper->getArtists($filterChar);
-        $this->view->showall = $filterChar ? $filterChar : false;
+        $filter['filterChar'] = $this->req->getParam('filter-char');
+        $filter['name']       = $this->req->getParam('name');
+        $filter['artform']    = $this->req->getParam('artform');
+        $filter['activity']   = $this->req->getParam('activity');
+        
+        $this->view->artistsList = $this->dbMapper->getArtists($filter);
+        $this->view->showall = $filter['filterChar'] ? $filter['filterChar'] : false;
         
         $this->view->metaTitle   = 'Find an Artist';
         $this->view->contentView = '/artist/index.phtml';
-        $this->renderView();
+        $this->renderView('artists.phtml');
     }
     
     public function viewartistAction() {
