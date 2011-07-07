@@ -19,6 +19,11 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->view->artistsList = $this->dbMapper->getArtists($filter);
         $this->view->showall = $filter['filterChar'] ? $filter['filterChar'] : false;
         
+        $this->view->filter = $filter;
+        
+        $this->view->artforms   = $this->dbMapper->getArtForms();
+        $this->view->activities = $this->dbMapper->getActivities();
+        
         $this->view->metaTitle   = 'Find an Artist';
         $this->view->contentView = '/artist/index.phtml';
         $this->renderView('artists.phtml');

@@ -177,33 +177,69 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
     }
     
     public function getArtists($filter) {
-        $sql = "SELECT * FROM artists WHERE %s ORDER BY first_name ASC";
+        $sql = "SELECT DISTINCT
+                    artists.*
+                FROM
+                    artists
+                %s
+                WHERE %s
+                ORDER BY first_name ASC";
         
+        $joins = array();
         $where = array();
-        if(isset($filter['filterChar'])) {
+        if(!empty($filter['filterChar'])) {
             $where[] = "first_name LIKE '" . $filter['filterChar'] . "%'";
         }
         
-        if(isset($filter['name'])) {
-            $where[] = "first_name LIKE '%" . $filter['name'] . "%' OR surname LIKE '%" . $filter['name'] . "%'";
+        if(!empty($filter['name'])) {
+            $where[] = "(first_name LIKE '%" . $filter['name'] . "%' OR surname LIKE '%" . $filter['name'] . "%')";
         }
         
-        if(isset($filter['artform'])) {
-            //$where[] = "first_name LIKE '%" . $filter['name'] . "%' OR surname LIKE '%" . $filter['name'] . "%'";
+        if(!empty($filter['artform'])) {
+            $joins[] = "INNER JOIN artists_artforms ON artists.id = artists_artforms.artist_id";
+            $where[] = "artists_artforms.artform_id = " . $filter['artform'];
         }
         
-        if(isset($filter['activity'])) {
-            //$where[] = "first_name LIKE '%" . $filter['name'] . "%' OR surname LIKE '%" . $filter['name'] . "%'";
+        if(!empty($filter['activity'])) {
+            $joins[] = "INNER JOIN artists_activities ON artists.id = artists_activities.artist_id";
+            $where[] = "artists_activities.activity_id = " . $filter['activity'];
         }
         
-        if(isset($filter['approved'])) {
+        if(!empty($filter['approved'])) {
              $where[] = "status = 'approved'";
         }
         
+        $joinClaus  = count($joins) ? implode(' ', $joins) : '';
         $whereClaus = count($where) ? implode(' AND ', $where) : '1';
-        $sql = sprintf($sql, $whereClaus);
+        $sql = sprintf($sql, $joinClaus, $whereClaus);
         
         return $this->db->fetchAll($sql);                 
+    }
+    
+    public function getArtForms() {
+        $sql = "SELECT * FROM artforms ORDER BY artform ASC";
+        
+        $rows = $this->db->fetchAll($sql);
+        
+        $artforms = array();
+        foreach($rows as $row) {
+            $artforms[$row['artform_id']] = $row['artform'];
+        }
+        
+        return $artforms;
+    }
+    
+    public function getActivities() {
+        $sql = "SELECT * FROM activities ORDER BY activity ASC";
+        
+        $rows = $this->db->fetchAll($sql);
+        
+        $activities = array();
+        foreach($rows as $row) {
+            $activities[$row['activity_id']] = $row['activity'];
+        }
+        
+        return $activities;
     }
     
     public function getMembers($filterChar) {

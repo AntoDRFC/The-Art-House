@@ -4,29 +4,14 @@
         <li>
             <div style="float: left; margin-right: 10px;">
                 <label class="desc">Name</label>
-                <input type="text" name="name" value="" />
+                <input type="text" name="name" value="<?=!empty($this->filter['name']) ? $this->filter['name'] : ''?>" />
             </div>
             
             <div style="float: left; margin-right: 10px;">
                 <label class="desc">Art Form</label>
                 <select name="artform">
                     <option value="">- select -</option>
-                    <option>2D</option>
-                    <option>3D Object</option>
-                    <option>Public Art</option>
-                    <option>Drawing</option>
-                    <option>Film & video</option>
-                    <option>Installation</option>
-                    <option>Mixed media</option>
-                    <option>Painting</option>
-                    <option>Performance</option>
-                    <option>Photography</option>
-                    <option>Print</option>
-                    <option>Sculpture</option>
-                    <option>Sound</option>
-                    <option>Textiles</option>
-                    <option>Jewellery</option>
-                    <option>Design</option>
+                    <?=Globals::makeOptions($this->artforms, $this->filter['artform'])?>
                 </select>
             </div>
             
@@ -34,12 +19,7 @@
                 <label class="desc">Activity</label>
                 <select name="activity">
                     <option value="">- select -</option>
-                    <option>Exhibitions</option>
-                    <option>Commissions</option>
-                    <option>Residency</option>
-                    <option>Selling</option>
-                    <option>Workshop/Teaching</option>
-                    <option>Collaborations</option>
+                    <?=Globals::makeOptions($this->activities, $this->filter['activity'])?>
                 </select>
             </div>
             
