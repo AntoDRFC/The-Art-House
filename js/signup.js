@@ -1,12 +1,12 @@
 $(document).ready(function(){
    
-   $('#patronShow').click(function(){
-       $('#patron').show();
+   $('#supporterShow').click(function(){
+       $('#supporter').show();
        $('#artist').hide();
    });
    
    $('#artistShow').click(function(){
-       $('#patron').hide();
+       $('#supporter').hide();
        $('#artist').show();
    });
    

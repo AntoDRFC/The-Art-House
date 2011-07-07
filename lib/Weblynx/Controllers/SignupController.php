@@ -18,9 +18,9 @@ class SignupController extends Weblynx_Controllers_Base {
         $this->renderView();
     }
     
-    public function patronAction() {
-        $this->view->page_title  = 'Patron Signup';
-        $this->view->contentView = '/signup/patron.phtml';
+    public function supporterAction() {
+        $this->view->page_title  = 'Supporter Signup';
+        $this->view->contentView = '/signup/supporter.phtml';
         
         $this->renderView();
     }
@@ -61,13 +61,13 @@ class SignupController extends Weblynx_Controllers_Base {
         
         $memberType = $this->req->getParam('type');
         switch($memberType) {
-            case 'patron':
+            case 'supporter':
                 $userData['member_type'] = 'Supporter';
                 break;
         }
         
         // find out which type of user they are to add more details
-        if($this->req->getParam('type') == 'patron') {
+        if($this->req->getParam('type') == 'supporter') {
             
         } elseif($this->req->getParam('type') == 'artist') {
             // hmmmm 

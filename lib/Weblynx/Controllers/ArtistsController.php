@@ -38,6 +38,11 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->view->metaTitle   = 'Artists Artwork';
         
         $this->view->contentView = '/artist/artwork.phtml';
+        
+        if($_SESSION['id'] == $this->view->artist["id"]) {
+            $this->view->showLinks = true;
+        }
+        
         $this->renderView();
     }
     
@@ -68,10 +73,18 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->view->artistNews  = $this->dbMapper->getArtistNews($this->view->artistId);
         
         $this->view->contentView = '/artist/news.phtml';        
+        
+        if($_SESSION['id'] == $this->view->artist["id"]) {
+            $this->view->showLinks = true;
+        }
+        
         $this->renderView();
     }
     
-    public function addnewsAction() {               
+    public function addnewsAction() {  
+        
+        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
+        
         $this->view->contentView = '/artist/addnews.phtml';        
         $this->renderView();
     }
@@ -120,7 +133,10 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->_redirect('/artists/home/artistId/' . $_SESSION['id']);
     }
     
-    public function addartworkAction() {               
+    public function addartworkAction() {    
+        
+        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
+        
         $this->view->contentView = '/artist/addartwork.phtml';        
         $this->renderView();
     }

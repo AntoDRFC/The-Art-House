@@ -4,6 +4,12 @@
 
 <p id="artist_nav"><a href="/artists/biography/id/<?=$this->artist['id']?>"><img src="/images/artist_biography.jpg" alt="Biography" width="177" height="28" /></a> <a href="/artists/news/id/<?=$this->artist['id']?>"><img src="/images/artist_news.jpg" alt="News" width="177" height="28" /></a> <a href="/artists/viewartist/id/<?=$this->artist['id']?>"><img src="/images/artist_artwork.jpg" alt="Artwork" width="177" height="28" /></a></p>
 
+<?php 
+    if($this->showLinks == 1):                    
+?>
+<a href="/artists/addnews/">Add News</a>
+<?php endif; ?>
+
 <?php if($this->artistNews): ?>
     <?php foreach($this->artistNews as $news): ?>
         <div>
