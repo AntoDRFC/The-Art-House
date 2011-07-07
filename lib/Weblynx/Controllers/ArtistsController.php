@@ -9,6 +9,11 @@
 
 class ArtistsController extends Weblynx_Controllers_Base {
     
+    public function preDispatch() {
+        $this->view->artforms   = $this->dbMapper->getArtForms();
+        $this->view->activities = $this->dbMapper->getActivities();
+    }
+    
     public function indexAction() {
         $filter['filterChar'] = $this->req->getParam('filter-char');
         $filter['name']       = $this->req->getParam('name');
@@ -20,9 +25,6 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->view->showall = $filter['filterChar'] ? $filter['filterChar'] : false;
         
         $this->view->filter = $filter;
-        
-        $this->view->artforms   = $this->dbMapper->getArtForms();
-        $this->view->activities = $this->dbMapper->getActivities();
         
         $this->view->metaTitle   = 'Find an Artist';
         $this->view->contentView = '/artist/index.phtml';
@@ -43,7 +45,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
             $this->view->showLinks = true;
         }
         
-        $this->renderView();
+        $this->renderView('artists.phtml');
     }
     
     public function biographyAction() {
@@ -53,7 +55,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->view->metaTitle   = 'Artists Biography';
         
         $this->view->contentView = '/artist/biography.phtml';
-        $this->renderView();
+        $this->renderView('artists.phtml');
     }
     
     public function homeAction() {
@@ -78,7 +80,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
             $this->view->showLinks = true;
         }
         
-        $this->renderView();
+        $this->renderView('artists.phtml');
     }
     
     public function addnewsAction() {  
@@ -86,7 +88,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
         
         $this->view->contentView = '/artist/addnews.phtml';        
-        $this->renderView();
+        $this->renderView('artists.phtml');
     }
     
     public function savenewsAction() {               
@@ -138,7 +140,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
         
         $this->view->contentView = '/artist/addartwork.phtml';        
-        $this->renderView();
+        $this->renderView('artists.phtml');
     }
     
     public function saveartworkAction() {               
