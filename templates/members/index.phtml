@@ -1,5 +1,53 @@
 <p style="font-size: 16px;">Filter List</p>
-<p style="font-size: 14px; margin-bottom: 20px;" id="alphabet">
+<form method="get" action="/members/index/">
+    <ul class="form" style="margin-bottom: 10px; overflow: hidden;">
+        <li>
+            <div style="float: left; margin-right: 10px;">
+                <label class="desc">Name</label>
+                <input type="text" name="name" value="" />
+            </div>
+            
+            <div style="float: left; margin-right: 10px;">
+                <label class="desc">Art Form</label>
+                <select name="artform">
+                    <option value="">- select -</option>
+                    <option>2D</option>
+                    <option>3D Object</option>
+                    <option>Public Art</option>
+                    <option>Drawing</option>
+                    <option>Film & video</option>
+                    <option>Installation</option>
+                    <option>Mixed media</option>
+                    <option>Painting</option>
+                    <option>Performance</option>
+                    <option>Photography</option>
+                    <option>Print</option>
+                    <option>Sculpture</option>
+                    <option>Sound</option>
+                    <option>Textiles</option>
+                    <option>Jewellery</option>
+                    <option>Design</option>
+                </select>
+            </div>
+            
+            <div style="float: left; margin-right: 10px;">
+                <label class="desc">Activity</label>
+                <select name="activity">
+                    <option value="">- select -</option>
+                    <option>Exhibitions</option>
+                    <option>Commissions</option>
+                    <option>Residency</option>
+                    <option>Selling</option>
+                    <option>Workshop/Teaching</option>
+                    <option>Collaborations</option>
+                </select>
+            </div>
+            
+            <div style="float: left; margin-right: 10px;"><label class="desc">&nbsp;</label><input type="submit" value="Submit"></div>
+        </li>
+    </ul>
+</form>
+<p style="font-size: 14px; margin-bottom: 20px; clear: both;" id="alphabet">
 <?php foreach(range('a','z') as $i): ?>
     <a href="/members/index/filter-char/<?=$i?>"<?php if($this->showall == $i): ?> class="current"<?php endif; ?>><?=$i?></a> <?php if($i != 'z'): ?>|<?php endif; ?>
 <?php endforeach; ?>
@@ -7,7 +55,7 @@
 | <a href="/members">show all</a>
 <?php endif; ?>
 </p>
-<table cellspacing="0" id="artist_listing">
+<table cellspacing="5" id="artist_listing">
     <tr>
         <th>Name</th>
         <th>Email</th>

@@ -14,6 +14,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $filter['name']       = $this->req->getParam('name');
         $filter['artform']    = $this->req->getParam('artform');
         $filter['activity']   = $this->req->getParam('activity');
+        $filter['approved']   = 1;
         
         $this->view->artistsList = $this->dbMapper->getArtists($filter);
         $this->view->showall = $filter['filterChar'] ? $filter['filterChar'] : false;

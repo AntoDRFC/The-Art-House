@@ -177,7 +177,7 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
     }
     
     public function getArtists($filter) {
-        $sql = "SELECT * FROM artists WHERE status = 'approved' AND %s ORDER BY first_name ASC";
+        $sql = "SELECT * FROM artists WHERE %s ORDER BY first_name ASC";
         
         $where = array();
         if(isset($filter['filterChar'])) {
@@ -194,6 +194,10 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
         
         if(isset($filter['activity'])) {
             //$where[] = "first_name LIKE '%" . $filter['name'] . "%' OR surname LIKE '%" . $filter['name'] . "%'";
+        }
+        
+        if(isset($filter['approved'])) {
+             $where[] = "status = 'approved'";
         }
         
         $whereClaus = count($where) ? implode(' AND ', $where) : '1';
