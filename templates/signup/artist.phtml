@@ -1,0 +1,212 @@
+<form method="post" action="/signup/senddetails">
+    <input type="hidden" name="type" value="artist"/>
+    <p>I would like to join the art house as </p>
+    <div id="signupas">
+        <input type="radio" class="membership" name="membership" value="individual" /> A individual artist: <strong>&pound;15.00</strong> (<strong>&pound;7.50</strong> concessionary membership, not available to international members)<br />
+        <input type="radio" class="membership" name="membership" value="joint" /> Two people at the same address: <strong>&pound;20.00</strong><br />
+        <input type="radio" class="membership" name="membership" value="group" /> As a Group: <strong>&pound;32.50</strong> (For group membership, please give the name of the person you would like us to address correspondence to)<br />
+    </div>
+    
+    <div id="individual_choices" style="display: none;">
+        <input type="radio" class="individual_choice" name="individual_choice" value="member" /> Individual member
+        <input type="radio" class="individual_choice" name="individual_choice" value="company" /> Individual company
+    </div>
+    
+    <div class="artistform" style="display: none;">
+        <div class="form_field individual"><label for="first_name" class="form_desc">First Name</label><input class="form_content" type="text" name="first_name" /> *</div>
+        <div class="form_field individual"><label for="surname" class="form_desc">Surname</label><input class="form_content" type="text" name="surname" /> *</div>
+        <div class="form_field company"><label for="company_name" class="form_desc">Company Name</label><input class="form_content" type="text" name="company_name" /> *</div>
+        <div class="form_field group"><label for="group_name" class="form_desc">Group Name</label><input class="form_content" type="text" name="group_name" /> *</div>
+        <div class="form_field group"><label for="group_contact" class="form_desc">Group Contact</label><input class="form_content" type="text" name="group_contact" /> *</div>
+    	<div class="form_field"><label for="addressOne" class="form_desc">Address Line One</label><input class="form_content" type="text" name="addressOne" /> *</div>
+    	<div class="form_field"><label for="addressTwo" class="form_desc">Address Line Two</label><input class="form_content" type="text" name="addressTwo" /></div>
+    	<div class="form_field"><label for="addressThree" class="form_desc">Address Line Three</label><input class="form_content" type="text" name="addressThree" /></div>
+    	<div class="form_field"><label for="city" class="form_desc">City</label><input class="form_content" type="text" name="city" /></div>
+    	<div class="form_field"><label for="postcode" class="form_desc">Postcode</label><input class="form_content" type="text" name="postcode" /> *</div>
+    	<div class="form_field"><label for="county" class="form_desc">County</label><input class="form_content" type="text" name="county" /></div>
+    	<div class="form_field"><label for="country" class="form_desc">Country</label><input class="form_content" type="text" name="country" /></div>
+    	<div class="form_field"><label for="phone" class="form_desc">Telephone Number</label><input class="form_content" type="text" name="phone" /></div>
+    	<div class="form_field"><label for="mobile" class="form_desc">Mobile</label><input class="form_content" type="text" name="mobile" /></div>
+    	<div class="form_field"><label for="email" class="form_desc">Email</label><input class="form_content" type="text" name="email" /> *</div>
+        <div class="form_field">
+            How did you hear about The Art House?<br/>
+            <select name="hear">
+                <option value="">- select -</option>
+                <option value="Leaflet">Leaflet</option>
+                <option value="Word of mouth">Word of mouth</option>
+                <option value="Website">Website</option>
+                <option value="Press">Press</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form_field">
+            Art Form (select from the following)
+            <?php foreach($this->artforms as $artform_id=>$artform): ?>
+                <label class="checkboxLabel"><input type="checkbox" name="artforms[]" value="<?=$artform_id?>" /> <?=$artform?></label>
+            <?php endforeach; ?>
+        </div>
+        <div class="form_field">
+            Activity
+            <?php foreach($this->activities as $activity_id=>$activity): ?>
+                <label class="checkboxLabel"><input type="checkbox" name="activities[]" value="<?=$activity_id?>" /> <?=$activity?></label>
+            <?php endforeach; ?>
+        </div>
+    
+        <p class="form_header"><strong>Contact preferences</strong></p>
+        <div class="form_field">
+            <label><input type="checkbox" value="true" name="noemail"> We send out our monthly Opportunities Bulletin by email. Please indicate if this is not your preferred method of correspondence.</label>
+        </div>
+    
+        <p class="form_header">What is your preferred method of receiving general correspondence? e.g. larger font size, by post, specific colour contrast.</p>
+        <div class="form_field"><input class="form_content" type="text" name="contact_method" /></div>
+        <div class="form_field"><input type="checkbox" value="false" name="passdetails"> <strong>If you would prefer for us not to pass on your contact details to a gallery, commissioner, purchaser or others who might enquire about your work, tick here</strong><br />NB. We will never pass on your details indiscriminately for use on mailing lists.</div>
+    
+        <p class="form_header"><strong>Directory listing</strong></p>
+        <div class="form_field"><input type="checkbox" value="false" name="directory_listing"> A basic entry will be created in our artists members database with the information that you provide.  This can be extended with additional information at a later date.  If you do not require an entry in the database please tick this box.</div>
+    
+        <p class="form_header"><strong>Latest News</strong></p>
+        <div class="form_field">
+            <input type="checkbox" value="nocomms" name="accept_communication"> As part of your membership we will send you regular communications, if you do not wish to receive these tick this box. Please note you will be able to unsubscribe to any of our services at a later date.
+        </div>
+        
+        <p class="form_header"><strong>Verification</strong></p>
+        <div class="form_field">
+            <label class="form_desc_vertical">How would you like to pay?</label>
+            <input type="radio" value="1" name="verification"> Download my application form and send it to you with a cheque or pay in person<br />
+            <input type="radio" value="2" name="verification"> Submit my application now and pay over the phone via a call back<br />
+        </div>
+        
+        <p class="form_header"><strong>Declaration:</strong></p>
+        <div class="form_field">
+            <input type="checkbox" value="accept" name="declaration" /> I have read and agree to the Terms of Membership. I agree to my registration details being held on computer. This payment is for one year's membership
+        </div>
+        
+        <p class="form_header"><strong>Equal Opportunities</strong></p>
+        <p>Please note this section is voluntary. However, it is important to us to know how our membership is made up. We will use the information we gather from application forms in the following ways:</p>
+        <ul>
+            <li>To ensure that we offer the best service possible to our members and maintain good practice.</li>
+            <li>To enable us to provide statistics about the make-up of our organisation to our funding bodies.</li>
+            <li>To offer opportunities to individual members based on the information they provide and their interests.</li>
+        </ul>
+        <p>The Art House has an Equal Opportunities Policy available on request.</p>
+        
+        <p class="form_header"><strong>Please complete the following:</strong></p>
+        <div class="form_field"><label for="gender" class="form_desc">Gender</label><input type="radio" name="gender" value="male" /> Male <input type="radio" name="gender" value="female" /> Female</div>
+        <div class="form_field"><label for="dob" class="form_desc">D.O.B</label><input class="form_content" type="text" name="dob" /> (dd/mm/yyyy)</div>
+        
+        <div class="form_field">
+            Ethnic Identity/Origin
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="African/Caribbean" /> African/Caribbean</label>
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="Asian" /> Asian</label>
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="British/Irish" /> British/Irish</label>
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="Black British" /> Black British</label>
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="British Asian" /> British Asian</label>
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="Other European" /> Other European</label>
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="Other" /> Other <em>please specify</em></label>
+        </div>
+        
+        <p class="form_header"><strong>Disability</strong></p>
+        <div class="form_field">
+            Do you consider yourself to be disabled?
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="Yes" /> Yes</label>
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="No" /> No</label>
+            <label class="checkboxLabel"><input type="radio" name="ethnic_origin" value="Prefer not to say" /> Prefer not to say</label>
+        </div>
+        
+        <p class="form_header"><strong>If yes</strong>, how would you describe your disability?</p>
+        <div class="form_field">
+            <input type="checkbox" value="prefernot" name="disabilitydesc" /> Prefer not to say<br />
+            <textarea name="disability_description"></textarea>
+        </div>
+        
+        <input type="submit" value="Submit" id="submitArtist"/>
+    </div>
+    
+    
+    <div id="group" class="information" style="display: none;">                
+        <p>Group information</p>        
+            <input type="text" name="groupName"/> Group name <br/>                      
+    </div>
+    <div id="individual" class="information" style="display: none;">        
+        <p>Individual information</p>        
+            <input type="text" name="first_name"/> First Name <br/>
+            <input type="text" name="surname"/> Surname <br/>                
+            <input type="text" name="addressOne"/> Address line one <br/>
+            <input type="text" name="addressTwo"/> Address line two <br/>
+            <input type="text" name="city"/> City <br/>
+            <input type="text" name="county"/> County <br/>
+            <input type="text" name="country"/> Country <br/>
+            <input type="text" name="telephone"/> Telephone <br/>
+            <input type="text" name="mobile"/> Mobile <br/>
+            <input type="text" name="email"/> Email <br/>
+            <input type="text" name="website"/> Website <br/>                        
+    </div>        
+    <div id="pair" class="information" style="display: none;">    
+        <p>Individual one information</p>        
+            <input type="text" name="firstNameFirst"/> First Name <br/>
+            <input type="text" name="surnameFirst"/> Surname <br/>                
+            <input type="text" name="mobileFirst"/> Mobile <br/>
+            <input type="text" name="emailFirst"/> Email <br/>
+            <input type="text" name="websiteFirst"/> Website <br/>        
+        <p>Individual two information</p>        
+            <input type="text" name="first_nameSecond"/> First Name <br/>
+            <input type="text" name="surnameSecond"/> Surname <br/>                
+            <input type="text" name="mobileSecond"/> Mobile <br/>
+            <input type="text" name="emailSecond"/> Email <br/>
+            <input type="text" name="websiteSecond"/> Website <br/>            
+        <p>Address</p>        
+            <input type="text" name="addressOne"/> Address line one <br/>
+            <input type="text" name="addressTwo"/> Address line two <br/>
+            <input type="text" name="city"/> City <br/>
+            <input type="text" name="county"/> County <br/>
+            <input type="text" name="country"/> Country <br/>
+            <input type="text" name="telephoneFirst"/> Telephone <br/>                        
+    </div>
+    
+    <div id="generic" style="display: none;">
+        <p>More iformatiom</p>
+            How did you hear about The Art House?
+            <br/>
+            <select name="hear">
+                <option value="leaflet">Leaflet</option>
+                <option value="wordofmouth">Word of mouth</option>
+                <option value="website">Website</option>
+                <option value="press">Press</option>
+                <option value="other">Other</option>
+            </select>
+            <br/>
+            <br/>
+            Art Form (select from the following)
+            <br/>
+            <input type="checkbox" name="artForm" value="2D"/> 2D <br/>
+            <input type="checkbox" name="artForm" value="3DObject"/> 3D Object <br/>
+            <input type="checkbox" name="artForm" value="publicArt"/> Public Art <br/>
+            <input type="checkbox" name="artForm" value="drawing"/> Drawing <br/>
+            <input type="checkbox" name="artForm" value="filmVideo"/> Film &amp; video <br/>
+            <input type="checkbox" name="artForm" value="installation"/> Installation <br/>
+            <input type="checkbox" name="artForm" value="mixedMedia"/> Mixed media <br/>
+            <input type="checkbox" name="artForm" value="painting"/> Painting <br/>
+            <input type="checkbox" name="artForm" value="performance"/> Performance <br/>
+            <input type="checkbox" name="artForm" value="photography"/> Photography <br/>
+            <input type="checkbox" name="artForm" value="print"/> Print <br/>
+            <input type="checkbox" name="artForm" value="sculpture"/> Sculpture <br/>
+            <input type="checkbox" name="artForm" value="sound"/> Sound <br/>
+            <input type="checkbox" name="artForm" value="textiles"/> Textiles <br/>
+            <input type="checkbox" name="artForm" value="jewellery"/> Jewellery <br/>
+            <input type="checkbox" name="artForm" value="design"/> Design <br/>
+            <br/>
+            <br/>
+            Activity
+            <br/>
+            <input type="checkbox" name="activity" value="exhibitions"/> Exhibitions <br/>
+            <input type="checkbox" name="activity" value="commissions"/> Commissions <br/>
+            <input type="checkbox" name="activity" value="residency"/> Residency <br/>
+            <input type="checkbox" name="activity" value="selling"/> Selling <br/>
+            <input type="checkbox" name="activity" value="workshopTeaching"/> Workshop/Teaching <br/>
+            <input type="checkbox" name="activity" value="collaborations"/> Collaborations <br/>
+            <input type="text" name="activity"/> Other <br/>
+            <br/>
+            <br/>
+        <input type="submit" value="Apply"/>                      
+    </div>
+</form>

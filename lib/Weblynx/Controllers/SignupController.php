@@ -10,10 +10,17 @@
 class SignupController extends Weblynx_Controllers_Base {
 
     public function indexAction() {
-        $this->view->headJs[]    = '/js/jquery-1.4.4.js';
+        $this->_redirect('/view/get-involved');
+    }
+    
+    public function artistAction() {
+        $this->view->page_title  = 'Artist Signup';
+        
+        $this->view->artforms   = $this->dbMapper->getArtForms();
+        $this->view->activities = $this->dbMapper->getActivities();
+        
         $this->view->headJs[]    = '/js/signup.js';
-        $this->view->page_title  = 'Get Involved';
-        $this->view->contentView = '/signup/index.phtml';
+        $this->view->contentView = '/signup/artist.phtml';
         
         $this->renderView();
     }

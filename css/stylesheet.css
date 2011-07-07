@@ -413,6 +413,14 @@ h2.blogtitle {
     border: 1px solid #545142;
 }
 
+.checkboxLabel {
+    display: block;
+}
+
+#signupas, #individual_choices {
+    margin: 10px 0;
+}
+
 #subnav {
 	color: #080340;
 	font-size: 14px;
