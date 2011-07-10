@@ -15,7 +15,12 @@
         <div>
             <h3><?=$news['title']?></h3>
             <h4><?=Globals::dateMysqlToUk($news['newsdate'])?></h4>
-            <p><?=$news['content']?></p>            
+            <p><?=$news['content']?></p>
+            <?php 
+                if($this->showLinks == 1):                    
+            ?>
+                <a href="/artists/updatenews/">Update this article</a>
+            <?php endif; ?>
         </div>
         <hr/>
     <?php endforeach; ?>

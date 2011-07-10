@@ -35,7 +35,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $artistId = $this->req->getParam('id');
         $this->view->artist = $this->dbMapper->getArtist($artistId);
         
-        $this->view->work   = $this->dbMapper->getArtistWork($artistId);
+        $this->view->work   = $this->dbMapper->getArtistWork($artistId);               
         
         $this->view->metaTitle   = 'Artists Artwork';
         
@@ -106,6 +106,24 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->renderView('artists.phtml');
     }
     
+    public function updatenewsAction() {  
+        
+        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
+        $this->view->artistNews  = $this->dbMapper->getArtistNews($this->view->artist["id"]);                
+        
+        $this->view->contentView = '/artist/updatenews.phtml';        
+        $this->renderView();
+    }
+    
+    public function updateartworkAction() {  
+        
+        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
+        $this->view->artistWork  = $this->dbMapper->getArtistWork($this->view->artist["id"]);                       
+        
+        $this->view->contentView = '/artist/updateartwork.phtml';        
+        $this->renderView();
+    }
+    
     public function savenewsAction() {               
         
         $userData['title']      = htmlentities($this->req->getParam('title'));
@@ -164,7 +182,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
     public function saveartworkAction() {               
 
         $upload = new Zend_File_Transfer_Adapter_Http();
-        $dest_dir = $this->config->paths->base . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'artist_uploads' . DIRECTORY_SEPARATOR . '1284';
+        $dest_dir = $this->config->paths->base . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'artist_uploads' . DIRECTORY_SEPARATOR . $_SESSION['id'];
         
         if(!file_exists($dest_dir)){
             if(!mkdir($dest_dir)){
@@ -186,15 +204,15 @@ class ArtistsController extends Weblynx_Controllers_Base {
             }
         }
 
-        $userData['title']      = htmlentities($this->req->getParam('artists_work'));
-        $userData['artist_id']  = '1284'; //$_SESSION['id'];
+        $userData['title']      = htmlentities($this->req->getParam('title'));
+        $userData['artist_id']  = $_SESSION['id']; //$_SESSION['id'];
         $userData['about_artwork']      = htmlentities($this->req->getParam('about_artwork'));
         $userData['picture']    = $info['name'];
         $userData['credits']    = htmlentities($this->req->getParam('credits'));
         
         $this->dbMapper->saveRecord($userData, 'artists_work', 'news_id');
         
-        $this->_redirect('/artists/viewartist/id/' . '1284');
+        $this->_redirect('/artists/viewartist/id/' . $_SESSION['id']);
                 
     }
     
