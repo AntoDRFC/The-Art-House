@@ -1,0 +1,31 @@
+<p><img src="/images/artist_header.jpg" alt="Artist" width="747" height="52" /></p>
+
+<h2 class="artistname"><?=$this->artist['first_name']?> <?=$this->artist['surname']?></h2>
+
+<p id="artist_nav"><a href="/artists/biography/id/<?=$this->artist['id']?>"><img src="/images/artist_biography.jpg" alt="Biography" width="177" height="28" /></a> <a href="/artists/news/id/<?=$this->artist['id']?>"><img src="/images/artist_news.jpg" alt="News" width="177" height="28" /></a> <a href="/artists/viewartist/id/<?=$this->artist['id']?>"><img src="/images/artist_artwork.jpg" alt="Artwork" width="177" height="28" /></a></p>
+
+<form method="post" action="/artists/saveartwork/" enctype="multipart/form-data">      
+     
+    <ul class="form">
+        <li>
+            <label class="desc">Title</label>
+            <input type="text" name="title" value="<?=$this->artistWork["title"];?> "/>
+        </li>
+        <li>
+            <label class="desc">Image</label>
+            <input type="file" name="picture"/>
+        </li>
+        <li>
+            <label class="desc">Credits</label>
+            <input type="text" name="credits" value="<?=$this->artistWork["credits"];?>"/>
+        </li>
+        <li>
+            <label class="desc">About Artwork</label>
+            <textarea name="about_artwork"><?=$this->artistWork["about_artwork"];?></textarea>
+        </li>
+        <li>
+            <input type="submit" name="submitbutton" value="Create"/>
+        </li>
+    </ul>
+
+</form>

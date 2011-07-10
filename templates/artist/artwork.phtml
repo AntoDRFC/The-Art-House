@@ -27,6 +27,11 @@
                 <img src="/images/artist_uploads/<?=$this->artist['id']?>/<?=$work['picture']?>" width="430" alt="<?=$work['title']?>" />
                 <h4 class="artwork_about_header">About this artwork</h4>
                 <p class="artwork_about"><?=$work['about_artwork']?></p>
+                <?php 
+                    if($this->showLinks == 1):                    
+                ?>
+                    <a href="/artists/updateartwork/">Update this work</a>
+                <?php endif; ?>
             </div>
         </div>
     <?php endforeach; ?>
