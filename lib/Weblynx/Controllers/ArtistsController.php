@@ -125,6 +125,24 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->renderView();
     }
     
+    public function updatenewsAction() {  
+        
+        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
+        $this->view->artistNews  = $this->dbMapper->getArtistNews($this->view->artist["id"]);                
+        
+        $this->view->contentView = '/artist/updatenews.phtml';        
+        $this->renderView();
+    }
+    
+    public function updateartworkAction() {  
+        
+        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
+        $this->view->artistWork  = $this->dbMapper->getArtistWork($this->view->artist["id"]);                       
+        
+        $this->view->contentView = '/artist/updateartwork.phtml';        
+        $this->renderView();
+    }
+    
     public function savenewsAction() {               
         
         $userData['title']      = htmlentities($this->req->getParam('title'));
