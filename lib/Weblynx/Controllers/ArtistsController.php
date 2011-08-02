@@ -35,13 +35,13 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $artistId = $this->req->getParam('id');
         $this->view->artist = $this->dbMapper->getArtist($artistId);
         
-        $this->view->work   = $this->dbMapper->getArtistWork($artistId);               
+        $this->view->work   = $this->dbMapper->getArtistWork($artistId);
         
         $this->view->metaTitle   = 'Artists Artwork';
         
         $this->view->contentView = '/artist/artwork.phtml';
         
-        if($_SESSION['id'] == $this->view->artist["id"]) {
+        if(isset($_SESSION['id']) && ($_SESSION['id'] == $this->view->artist["id"])) {
             $this->view->showLinks = true;
         }
         
@@ -59,7 +59,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $work = $this->dbMapper->getArtistWork($artistId);
         $this->view->work = array_pop($work);
         
-        if($_SESSION['id'] == $this->view->artist["id"]) {
+        if(isset($_SESSION['id']) && ($_SESSION['id'] == $this->view->artist["id"])) {
             $this->view->profileOwner = true;
         }
         
@@ -91,7 +91,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
         
         $this->view->contentView = '/artist/news.phtml';        
         
-        if($_SESSION['id'] == $this->view->artist["id"]) {
+        if(isset($_SESSION['id']) && ($_SESSION['id'] == $this->view->artist["id"])) {
             $this->view->showLinks = true;
         }
         
@@ -104,43 +104,6 @@ class ArtistsController extends Weblynx_Controllers_Base {
         
         $this->view->contentView = '/artist/addnews.phtml';        
         $this->renderView('artists.phtml');
-    }
-    
-    public function updatenewsAction() {  
-        
-        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
-        $this->view->artistNews  = $this->dbMapper->getArtistNews($this->view->artist["id"]);                
-        
-        $this->view->contentView = '/artist/updatenews.phtml';        
-        $this->renderView();
-    }
-    
-    public function updateartworkAction() {  
-        $artworkId = $this->req->getParam('artworkid');
-        
-        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
-        $this->view->artistWork  = $this->dbMapper->getWorkById($artworkId);                       
-        
-        $this->view->contentView = '/artist/updateartwork.phtml';        
-        $this->renderView();
-    }
-    
-    public function updatenewsAction() {  
-        
-        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
-        $this->view->artistNews  = $this->dbMapper->getArtistNews($this->view->artist["id"]);                
-        
-        $this->view->contentView = '/artist/updatenews.phtml';        
-        $this->renderView();
-    }
-    
-    public function updateartworkAction() {  
-        
-        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
-        $this->view->artistWork  = $this->dbMapper->getArtistWork($this->view->artist["id"]);                       
-        
-        $this->view->contentView = '/artist/updateartwork.phtml';        
-        $this->renderView();
     }
     
     public function savenewsAction() {               
@@ -223,8 +186,9 @@ class ArtistsController extends Weblynx_Controllers_Base {
             }
         }
 
-        $userData['title']      = htmlentities($this->req->getParam('title'));
-        $userData['artist_id']  = $_SESSION['id']; //$_SESSION['id'];
+        $userData['title']      = htmlentities($this->req->getParam('artists_work'));
+//        $userData['artist_id']  = '1284'; //$_SESSION['id'];
+        $userData['artist_id']  = $_SESSION['id'];
         $userData['about_artwork']      = htmlentities($this->req->getParam('about_artwork'));
         $userData['picture']    = $info['name'];
         $userData['credits']    = htmlentities($this->req->getParam('credits'));

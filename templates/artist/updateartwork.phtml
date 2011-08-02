@@ -9,7 +9,11 @@
     <ul class="form">
         <li>
             <label class="desc">Title</label>
-            <input type="text" name="title" value="<?=$this->artistWork["title"];?> "/>
+            <input type="text" name="title" value="<?=$this->artistWork["title"];?>"/>
+        </li>
+        <li>
+            <label class="desc">Current Image</label>
+            <img src="/images/artist_uploads/<?=$this->artist['id']?>/<?=$this->artistWork["picture"];?>" alt="<?=$this->artistWork["title"];?>">
         </li>
         <li>
             <label class="desc">Image</label>
