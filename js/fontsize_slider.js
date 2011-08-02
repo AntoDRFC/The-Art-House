@@ -7,6 +7,7 @@ $(document).ready(function() {
 		slide: function( event, ui ) {
             $("p, li, td").css("font-size", ui.value+"%");
             setCookie('fontsize', ui.value, 7);
+            $("#header p").css("font-size", "");
 		}
 	});
 	
@@ -14,6 +15,7 @@ $(document).ready(function() {
 	if(fontsize) {
 		$("#slider-range-min").slider("value", fontsize);
 		$("p, li, td").css("font-size", fontsize+"%");
+        $("#header p").css("font-size", "");
 	}
 	
     $('#smaller_text').click(function() {
@@ -31,6 +33,7 @@ $(document).ready(function() {
 		setCookie('fontsize', newFontSize, 7);
 		$("#slider-range-min").slider("value", newFontSize);
         $("p, li, td").css("font-size", newFontSize+"%");
+        $("#header p").css("font-size", "");
     });
     
     $('#bigger_text').click(function() {
@@ -48,5 +51,12 @@ $(document).ready(function() {
 		setCookie('fontsize', newFontSize, 7);
 		$("#slider-range-min").slider("value", newFontSize);
         $("p, li, td").css("font-size", newFontSize+"%");
+        $("#header p").css("font-size", "");
+    });
+    
+    $('#resetsize').click(function() {
+        setCookie('fontsize', 100, -1);
+		$("#slider-range-min").slider("value", 100);
+        $("p, li, td").css("font-size", "");
     });
 });

@@ -25,7 +25,7 @@
 <script type='text/javascript'>
     $(document).ready(function(){
         $(".tweet").tweet({
-            username: "sugarcaneweb",
+            username: "TheArtHouse2",
             join_text: "auto",
             avatar_size: null,
             count: 2,
@@ -52,7 +52,7 @@
 <div id="headerRightLinks"><p><a href="/">Accessibility Guide</a> |</p>
 </div><!-- end id="headerRightLinks" -->
 <div id="display-ops">
-            <p>Display Options<img src="/images/default.gif" alt="Default" width="16" height="17" class="first" /><img src="/images/clear.gif" alt="Clear" width="16" height="17" /><img src="/images/contrast.gif" alt="Contrast" width="15" height="17" /><span></span></p>
+            <p id="display-ops-title">Display Options<img src="/images/default.gif" alt="Default" width="16" height="17" class="first" /><img src="/images/clear.gif" alt="Clear" width="16" height="17" /><img src="/images/contrast.gif" alt="Contrast" width="15" height="17" /><span></span></p>
         </div><!-- end id="display-ops" -->
     <div id="slider_wrapper" style="overflow: hidden; clear: both;">
         <img src="/images/smaller_text.jpg" alt="Make text smaller" width="31" height="18" style="float: left;" id="smaller_text" />
@@ -60,6 +60,7 @@
            <div id="slider-range-min"></div>
         </div>
         <img src="/images/bigger_text.jpg" alt="Make text bigger" width="38" height="19" style="float: left;" id="bigger_text" />
+        <p><a href="#" id="resetsize" style="margin-left: 10px;">reset font size</a></p>
     </div>
 </div><!-- end id="headerRight" -->
 </div><!-- end id="header" -->
@@ -115,66 +116,66 @@
 <a href="/view/get-involved"><h3 class="rightColumnHome">get involved</h3></a>
 </div><!-- end id="rightColumnCalloutTop" -->
 <div class="rightColumnCalloutMiddle">
-<a href="/"><img src="/images/CALLOUT_1.jpg" alt="get involved" /></a>
+<a href="view/get-involved"><img src="/images/CALLOUT_1.jpg" alt="get involved" /></a>
 </div><!-- end id="rightColumnCalloutMiddle" -->
 <div class="rightColumnCalloutBottom">
-<a href="/"><p class="rightColumnHome">More about becoming a supporter, artist member or facility member...</p></a>
+<a href="/view/get-involved"><p class="rightColumnHome">More about becoming a patron, artist member or facility member...</p></a>
 </div><!-- end id="rightColumnCalloutBottom" -->
 <div class="rightColumnCalloutTop">
-<a href="/"><h3 class="rightColumnHome">equality & quality</h3></a>
+<a href="/view/our-mission"><h3 class="rightColumnHome">our mission</h3></a>
 </div><!-- end id="rightColumnCalloutTop" -->
 <div class="rightColumnCalloutMiddle">
-<a href="/"><img src="/images/CALLOUT_4.jpg" alt="equality & quality" /></a>
+<a href="/view/our-mission"><img src="/images/CALLOUT_4.jpg" alt="our mission" /></a>
 </div><!-- end id="rightColumnCalloutMiddle" -->
 <div class="rightColumnCalloutBottom">
-<a href="/"><p class="rightColumnHome">This section is all about dialogue and consultancy...</p></a>
+<a href="/view/our-mission"><p class="rightColumnHome">This section is all about dialogue and consultancy...</p></a>
 </div><!-- end id="rightColumnCalloutBottom" -->
 </div><!-- end id="rightColumnLeft" -->
 <div id="rightColumnMiddle">
 <div class="rightColumnCalloutTop">
-<a href="/"><h3 class="rightColumnHome">for artists</h3></a>
+<a href="/view/for-artists"><h3 class="rightColumnHome">for artists</h3></a>
 </div><!-- end id="rightColumnCalloutTop" -->
 <div class="rightColumnCalloutMiddle">
-<a href="/"><img src="/images/CALLOUT_2.jpg" alt="for artists" /></a>
+<a href="/view/for-artists"><img src="/images/CALLOUT_2.jpg" alt="for artists" /></a>
 </div><!-- end id="rightColumnCalloutMiddle" -->
 <div class="rightColumnCalloutBottom">
-<a href="/"><p class="rightColumnHome">Find out about what’s on, our facilities, residencies and more...</p></a>
+<a href="/view/for-artists"><p class="rightColumnHome">Find out about what’s on, our facilities, residencies and more...</p></a>
 </div><!-- end id="rightColumnCalloutBottom" -->
 <div class="rightColumnCalloutTop">
-<a href="/"><h3 class="rightColumnHome">find an artist</h3></a>
+<a href="/artists"><h3 class="rightColumnHome">find an artist</h3></a>
 </div><!-- end id="rightColumnCalloutTop" -->
 <div class="rightColumnCalloutMiddle">
-<a href="/"><img src="/images/CALLOUT_5.jpg" alt="find an artist" /></a>
+<a href="/artists"><img src="/images/CALLOUT_5.jpg" alt="find an artist" /></a>
 </div><!-- end id="rightColumnCalloutMiddle" -->
 <div class="rightColumnCalloutBottom">
-<a href="/"><p class="rightColumnHome">Here you’l find all the artists who are members in a directory...</p></a>
+<a href="/artists"><p class="rightColumnHome">Here you’l find all the artists who are members in a directory...</p></a>
 </div><!-- end id="rightColumnCalloutBottom" -->
 </div><!-- end id="rightColumnMiddle" -->
 <div id="rightColumnRight">
 <div class="rightColumnCalloutTop">
-<a href="/"><h3 class="rightColumnHome">space for hire</h3></a>
+<a href="/view/space-for-hire"><h3 class="rightColumnHome">space for hire</h3></a>
 </div><!-- end id="rightColumnCalloutTop" -->
 <div class="rightColumnCalloutMiddle">
-<a href="/"><img src="/images/CALLOUT_3.jpg" alt="space for hire" /></a>
+<a href="/view/space-for-hire"><img src="/images/CALLOUT_3.jpg" alt="space for hire" /></a>
 </div><!-- end id="rightColumnCalloutMiddle" -->
 <div class="rightColumnCalloutBottom">
-<a href="/"><p class="rightColumnHome">Unprecedented accessibility, artist studios, office space and more...</p></a>
+<a href="/view/space-for-hire"><p class="rightColumnHome">Unprecedented accessibility, artist studios, office space and more...</p></a>
 </div><!-- end id="rightColumnCalloutBottom" -->
 <div class="rightColumnCalloutTop">
-<a href="/"><h3 class="rightColumnHome">what's on</h3></a>
+<a href="/view/whats-on"><h3 class="rightColumnHome">what's on</h3></a>
 </div><!-- end id="rightColumnCalloutTop" -->
 <div class="rightColumnCalloutMiddle">
-<a href="/"><img src="/images/CALLOUT_6.jpg" alt="what's on" /></a>
+<a href="/view/whats-on"><img src="/images/CALLOUT_6.jpg" alt="what's on" /></a>
 </div><!-- end id="rightColumnCalloutMiddle" -->
 <div class="rightColumnCalloutBottom">
-<a href="/"><p class="rightColumnHome">All about events, courses and the Art House community groups...</p></a>
+<a href="/view/whats-on"><p class="rightColumnHome">All about events, courses and the Art House community groups...</p></a>
 </div><!-- end id="rightColumnCalloutBottom" -->
 </div><!-- end id="rightColumnRight" -->
 </div><!-- end id="rightColumn" -->
 
 <div id="clear"></div>
         
-<div id="blogHome">
+<div id="blogHome" style="margin-bottom: 10px;">
 <h1>follow our blog</h1>
 <?php if(count($this->blogposts)): ?>
 	<?php foreach($this->blogposts as $blogposts): ?>
@@ -200,9 +201,9 @@
 <p>The Art House, Drury Lane, Wakefield, WF1 2TE  Tel: 01924 377740<br />Website designed and built by <a href="http://www.sugarcaneweb.co.uk">www.sugarcaneweb.co.uk</a></p>
 </div><!-- end id="footerLeft" -->
 <div id="footerRight">
-<a href="/"><img src="/images/FOOTER_LOGO.gif" alt="" /></a>
-<a href="/"><img src="/images/FOOTER_LOGO.gif" alt="" /></a>
-<a href="/"><img src="/images/FOOTER_LOGO.gif" alt="" /></a>
+<a href="http://www.artscouncil.org.uk/" target="_blank"><img src="/images/ACE.gif" alt="art council" /></a>
+<a href="http://www.wyg.wyjs.org.uk/" target="_blank"><img src="/images/WYGRANTS.gif" alt="west yorkshire grants" /></a>
+<a href="http://www.wakefield.gov.uk/default.htm" target="_blank"><img src="/images/WAKEFIELD.gif" alt="wakefield council" /></a>
 </div><!-- end id="footerRight" -->
 <div id="clear"></div>
 </div><!-- end id="footerTop" -->
@@ -217,10 +218,19 @@
 <?php endforeach;?>
 
 <div id="accesskeys" style="display: none;">
-    <a href="/" accesskey="1">Home</a>
-    <a href="/view/about" accesskey="2">About</a>
-    <a href="/view/get-involved" accesskey="3">Get Involved</a>
-    <a href="/view/faq" accesskey="4">FAQ</a>
+    <a href="/" accesskey="1">Home Page</a>
+    <a href="/view/whats-on" accesskey="2">What's On</a>
+    <a href="#" accesskey="3">Site Map</a>
+    <a href="#" accesskey="4">Search</a>
+    <a href="#" accesskey="5">FAQ</a>
+    <a href="#" accesskey="6">Help</a>
+    <a href="http://www.the-arthouse.org.uk/upload/file/complaints_policy_and_procedure_2010.doc" accesskey="7">Complaints Procedure</a>
+    <a href="#" accesskey="8">Terms and Conditions</a>
+    <a href="/artists" accesskey="9">Artists Directory</a>
+    <a href="#" accesskey="0">Access Key Details</a>
+    <a href="/view/space-for-hire" accesskey="S">Space to Hire</a>
+    <a href="/view/get-involved" accesskey="G">Get Involved</a>
+    <a href="/blog/1" accesskey="E">Equality & Quality</a>
 </div>
 </body>
 </html>

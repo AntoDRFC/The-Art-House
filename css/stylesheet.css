@@ -685,6 +685,15 @@ ul#mainnav li.hidden {
     margin-bottom: 20px;
     font-size: 18px;
 }
+.artistname span {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+}
+.artistname span a {
+    color: #ababab;
+}
+
 #artist_nav {
     margin-bottom: 3px;
     line-height: 1em;

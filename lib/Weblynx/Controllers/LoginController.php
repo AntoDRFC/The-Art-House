@@ -39,7 +39,7 @@ class LoginController extends Weblynx_Controllers_Base {
             // start session 
             $_SESSION['id'] = $this->view->artist['id'];
             // redirect to artist page
-            $this->_redirect('/artists/viewartist/id/' . $this->view->artist['id']);
+            $this->_redirect('/artists/biography/id/' . $this->view->artist['id']);
             echo $_SESSION['id']; 
          else :
              $this->view->wrong = 'Your Login Details Are Wrong!';

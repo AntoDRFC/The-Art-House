@@ -290,18 +290,24 @@ class PagebuilderController extends Weblynx_Controllers_Base {
         $upload->addValidator('Extension', false, array('extension' => $allowed_extensions, 'messages' => array(Zend_Validate_File_Extension::FALSE_EXTENSION => 'Invalid extension for file %value%')));
 
         $files = $upload->getFileInfo();
-        foreach ($files as $file => $info) {
-            if($upload->isUploaded($info['name']) && $upload->isValid($info['name'])) {
-                $upload->receive($info['name']);
-                $savePicture['setting_id']    = 4;
-                $savePicture['setting_title'] = 'page_header';
-                $savePicture['setting_value'] = $info['name'];
-            } else {
-                throw new Exception('Error Reading Uploaded File.');
+        
+        if($files['header_picture']['name']) {
+            foreach ($files as $file => $info) {
+                if($upload->isUploaded($info['name']) && $upload->isValid($info['name'])) {
+                    $upload->receive($info['name']);
+                    $savePicture['setting_id']    = 4;
+                    $savePicture['setting_title'] = 'page_header';
+                    $savePicture['setting_value'] = $info['name'];
+                    $picSaved = $this->dbMapper->saveRecord($savePicture, 'cms_settings', 'setting_id');
+                } else {
+                    throw new Exception('Error Reading Uploaded File.');
+                }
             }
+        } else {
+            $picSaved = true;
         }
         
-        if($this->dbMapper->saveRecord($saveCaption, 'cms_settings', 'setting_id') && $this->dbMapper->saveRecord($savePicture, 'cms_settings', 'setting_id')) {
+        if($this->dbMapper->saveRecord($saveCaption, 'cms_settings', 'setting_id') && $picSaved) {
             $this->_redirect('/pagebuilder/');
         } else {
             throw new Exception('Failed to save default header, please go back and try again');
@@ -343,12 +349,15 @@ class PagebuilderController extends Weblynx_Controllers_Base {
         $upload->addValidator('Extension', false, array('extension' => $allowed_extensions, 'messages' => array(Zend_Validate_File_Extension::FALSE_EXTENSION => 'Invalid extension for file %value%')));
 
         $files = $upload->getFileInfo();
-        foreach ($files as $file => $info) {
-            if($upload->isUploaded($info['name']) && $upload->isValid($info['name'])) {
-                $upload->receive($info['name']);
-                $save['picture'] = $info['name'];
-            } else {
-                throw new Exception('Error Reading Uploaded File.');
+        
+        if($files['header_picture']['name']) {
+            foreach ($files as $file => $info) {
+                if($upload->isUploaded($info['name']) && $upload->isValid($info['name'])) {
+                    $upload->receive($info['name']);
+                    $save['picture'] = $info['name'];
+                } else {
+                    throw new Exception('Error Reading Uploaded File.');
+                }
             }
         }
         

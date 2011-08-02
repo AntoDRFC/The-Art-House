@@ -139,6 +139,15 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
         return $this->db->fetchAll($sql);
     }
     
+    public function getArtformsByArtistId($artistId) {
+        $sql = sprintf("SELECT artforms.artform
+                        FROM artists_artforms
+                        INNER JOIN artforms ON artists_artforms.artform_id = artforms.artform_id
+                        WHERE artists_artforms.artist_id = %d", $artistId);
+        
+        return $this->db->fetchAll($sql);
+    }
+    
     /*
      * Save a record, pass in the data to be saved, the table to save to, and the primary key
      */
