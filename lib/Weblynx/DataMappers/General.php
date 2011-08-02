@@ -281,6 +281,12 @@ class Weblynx_DataMappers_General extends Weblynx_DataMappers_Abstract {
         return $this->db->fetchAll($sql);
     }
     
+    public function getWorkById($artworkId) {
+        $sql = sprintf("SELECT * FROM artists_work WHERE work_id = %d", $artworkId);
+        
+        return $this->db->fetchRow($sql);
+    }
+    
     public function getArtistNews($artistId) {
         $sql = sprintf("SELECT * FROM artists_news WHERE artist_id = %d AND approved = 'Y'", $artistId);
         

@@ -116,9 +116,10 @@ class ArtistsController extends Weblynx_Controllers_Base {
     }
     
     public function updateartworkAction() {  
+        $artworkId = $this->req->getParam('artworkid');
         
         $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
-        $this->view->artistWork  = $this->dbMapper->getArtistWork($this->view->artist["id"]);                       
+        $this->view->artistWork  = $this->dbMapper->getWorkById($artworkId);                       
         
         $this->view->contentView = '/artist/updateartwork.phtml';        
         $this->renderView();
