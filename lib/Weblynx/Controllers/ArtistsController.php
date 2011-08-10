@@ -106,12 +106,37 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $this->renderView('artists.phtml');
     }
     
+    public function updatenewsAction() {
+        $newsId = $this->req->getParam('newsId');
+        
+        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
+        $this->view->artistNews  = $this->dbMapper->getArtistNews($newsId);                
+
+        $this->view->contentView = '/artist/updatenews.phtml';        
+        $this->renderView();
+    }
+    
+    public function updateartworkAction() {  
+        $artworkId = $this->req->getParam('artworkid');
+
+        $this->view->artist      = $this->dbMapper->getArtist($_SESSION['id']);
+        $this->view->artistWork  = $this->dbMapper->getWorkById($artworkId);                       
+        
+        $this->view->contentView = '/artist/updateartwork.phtml';        
+        $this->renderView();
+    }
+    
     public function savenewsAction() {               
         
         $userData['title']      = htmlentities($this->req->getParam('title'));
         $userData['artist_id']  = $_SESSION['id'];
         $userData['content']    = htmlentities($this->req->getParam('content'));        
         $userData['newsdate']   = date('Y-m-d');
+        $userData['news_id']    = htmlentities($this->req->getParam('news_id'));        
+        
+        if(!$userData['news_id']) {
+            $this->dbMapper->saveRecord($userData, 'artists_news');
+        }
         
         $this->dbMapper->saveRecord($userData, 'artists_news', 'news_id');
         
@@ -168,7 +193,7 @@ class ArtistsController extends Weblynx_Controllers_Base {
         
         if(!file_exists($dest_dir)){
             if(!mkdir($dest_dir)){
-                throw new Exception("Could not create upload folder for the header images to go into.");
+                throw new Exception("Could not upload image it already excisits.");
             }
         }
         $upload->setDestination($dest_dir);
@@ -192,8 +217,13 @@ class ArtistsController extends Weblynx_Controllers_Base {
         $userData['about_artwork']      = htmlentities($this->req->getParam('about_artwork'));
         $userData['picture']    = $info['name'];
         $userData['credits']    = htmlentities($this->req->getParam('credits'));
+        $userData['work_id']    = htmlentities($this->req->getParam('work_id'));
         
-        $this->dbMapper->saveRecord($userData, 'artists_work', 'news_id');
+        if(!$userData['work_id']) {
+            $this->dbMapper->saveRecord($userData, 'artists_work');
+        }
+        
+        $this->dbMapper->saveRecord($userData, 'artists_work', 'work_id');
         
         $this->_redirect('/artists/viewartist/id/' . $_SESSION['id']);
                 

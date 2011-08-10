@@ -4,12 +4,16 @@
 
 <p id="artist_nav"><a href="/artists/biography/id/<?=$this->artist['id']?>"><img src="/images/artist_biography.jpg" alt="Biography" width="177" height="28" /></a> <a href="/artists/news/id/<?=$this->artist['id']?>"><img src="/images/artist_news.jpg" alt="News" width="177" height="28" /></a> <a href="/artists/viewartist/id/<?=$this->artist['id']?>"><img src="/images/artist_artwork.jpg" alt="Artwork" width="177" height="28" /></a></p>
 
-<form method="post" action="/artists/savenews/">      
-     
+<form method="post" action="/artists/savenews/" enctype="multipart/form-data">      
+    <input type="text" name="news_id" value="<?=$this->artistNews["news_id"];?>"/>
     <ul class="form">
         <li>
             <label class="desc">Title</label>
             <input type="text" name="title" value="<?php $this->artistNews["title"];?>"/>
+        </li>
+        <li>
+            <label class="desc">Current Image</label>
+            <img src="/images/artist_uploads/<?=$this->artist['id']?>/<?=$this->artistNews["news_image"];?>" alt="<?=$this->artistWork["title"];?>">
         </li>
         <li>
             <label class="desc">Preview</label>

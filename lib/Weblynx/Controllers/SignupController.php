@@ -132,8 +132,8 @@ class SignupController extends Weblynx_Controllers_Base {
         // redirect               
         
         // save artist
-        $artistId = $this->dbMapper->saveRecord($userData, 'artists', 'id');
-        //var_dump($userData);
+        //$artistId = $this->dbMapper->saveRecord($userData, 'artists', 'id');
+        var_dump($this->req);exit;
         
         $linkAddress['artist_id']  = $artistId;
         $linkAddress['address_id'] = $addressId;
